@@ -108,6 +108,7 @@ export const useHistorialBajas = (createImageButton, createPDFButton) => {
 
   const filteredRows = rows.filter((row) => {
     const searchFields = [
+      row[0] || '', // Artículo
       row[1] || '', // Artículo
       row[2] || '', // Motivo
       row[4] || '', // Usuario
