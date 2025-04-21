@@ -14,7 +14,7 @@ const AdminArticlesTable = ({
   handleCancel,
 }) => {
   // Lista de campos deshabilitados
-  const disabledFields = ['id', 'fecha_creacion'];
+  const disabledFields = ['id', 'fecha',  "ubicacion"];
 
   const generateBarcodePDF = (codigo) => {
     const doc = new jsPDF();

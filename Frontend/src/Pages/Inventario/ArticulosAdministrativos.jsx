@@ -458,7 +458,7 @@ const ArticulosAdministrativos = ({ articulos = [], reloadArticulos }) => {
             handleSave={handleSave}
             handleCancel={handleCancel}
             errors={errors}
-            disableFields={["id"]}
+            disableFields={["id", "ubicacion",  "fecha"]}
           />
         </div>
       </div>

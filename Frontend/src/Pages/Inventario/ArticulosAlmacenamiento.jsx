@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Search } from 'lucide-react';
 import { useArticulos, useArticuloSearch } from '../../hooks/useArticulosAlmacenamiento';
@@ -7,8 +7,9 @@ import ButtonGroup from '../../Components/PDFAlm';
 import ExcelExportButton from '../../Components/Excel';
 import ModalBaja from '../../Components/ModalBaja';
 import BarcodeGenerator from "../../Components/BarcodeGenerator";
+
 const ArticulosAlmacenamiento = () => {
-  const headers = ['ID','Codigo',  'Producto/Detalle', 'Cantidad Inicial', 'Módulo', 'Estante', 'Estado', 'Entrada', 'Salida', 'Restante'];
+  const headers = ['ID', 'Codigo', 'Producto/Detalle', 'Cantidad Inicial', 'Módulo', 'Estante', 'Estado', 'Entrada', 'Salida', 'Restante'];
   const { articulos, loading, error, fetchArticulos, updateArticulo, deleteArticulo } = useArticulos();
   const { searchTerm, setSearchTerm, filteredArticulos } = useArticuloSearch(articulos);
   const navigate = useNavigate();
@@ -17,6 +18,26 @@ const ArticulosAlmacenamiento = () => {
   const [selectedArticulo, setSelectedArticulo] = useState(null);
   const [editingRowIndex, setEditingRowIndex] = useState(null);
   const [editedRowData, setEditedRowData] = useState({});
+  const [tableData, setTableData] = useState([]);
+
+  // Format the data for the table
+  useEffect(() => {
+    if (filteredArticulos.length > 0) {
+      const formattedData = filteredArticulos.map(articulo => ({
+        id: articulo.id,
+        codigo: articulo.codigo,
+        producto: articulo.producto,
+        cantidad_productos: articulo.cantidad_productos,
+        modulo: articulo.modulo,
+        estante: articulo.estante,
+        estado: articulo.estado,
+        entrada: articulo.entrada,
+        salida: articulo.salida,
+        cantidad: articulo.cantidad
+      }));
+      setTableData(formattedData);
+    }
+  }, [filteredArticulos]);
 
   const handleDeleteClick = (row) => {
     setSelectedArticulo(row);
@@ -44,15 +65,15 @@ const ArticulosAlmacenamiento = () => {
 
   const handleInputChange = (e, field) => {
     const value = e.target.value;
-    if (['id', 'cantidad'].includes(field)) return;
-
+    
     setEditedRowData(prev => {
       const updatedData = { ...prev, [field]: value };
 
+      // Calculate 'cantidad' when 'entrada' or 'salida' changes
       if (['entrada', 'salida'].includes(field)) {
         const entrada = parseInt(updatedData.entrada || 0, 10);
         const salida = parseInt(updatedData.salida || 0, 10);
-        const cantidadInicial = parseInt(prev.cantidad_productos || 0, 10);
+        const cantidadInicial = parseInt(updatedData.cantidad_productos || 0, 10);
         updatedData.cantidad = cantidadInicial + entrada - salida;
       }
 
@@ -61,15 +82,25 @@ const ArticulosAlmacenamiento = () => {
   };
 
   const handleEdit = (row, index) => {
+    // Make a clean copy of the row data to avoid reference issues
+    const rowData = { ...row };
     setEditingRowIndex(index);
-    setEditedRowData({ ...row });
+    setEditedRowData(rowData);
   };
 
   const handleSave = async () => {
     try {
+      if (!editedRowData.id) {
+        console.error('No ID found in edited data');
+        alert('Error: No se puede actualizar sin ID');
+        return;
+      }
+
       const success = await updateArticulo(editedRowData.id, editedRowData);
       if (success) {
         setEditingRowIndex(null);
+        setEditedRowData({});
+        await fetchArticulos(); // Refresh data after successful update
       }
     } catch (error) {
       console.error('Error al actualizar:', error);
@@ -82,6 +113,7 @@ const ArticulosAlmacenamiento = () => {
     setEditedRowData({});
   };
 
+  if (loading) return <div>Cargando...</div>;
   if (error) return <div>Error: {error}</div>;
 
   return (
@@ -130,18 +162,7 @@ const ArticulosAlmacenamiento = () => {
         <div className="overflow-x-auto">
           <AuxMaintenanceTable
             headers={headers}
-            rows={filteredArticulos.map((articulo) => ({
-              id: articulo.id,
-              codigo: articulo.codigo,
-              producto: articulo.producto,
-              cantidad_productos: articulo.cantidad_productos,
-              modulo: articulo.modulo,
-              estante: articulo.estante,
-              estado: articulo.estado,
-              entrada: articulo.entrada,
-              salida: articulo.salida,
-              cantidad: articulo.cantidad,
-            }))}
+            rows={tableData}
             onEdit={handleEdit}
             onDelete={handleDeleteClick}
             editingRowIndex={editingRowIndex}

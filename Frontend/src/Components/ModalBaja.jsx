@@ -1,27 +1,50 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const ModalBaja = ({ isOpen, onClose, onSave, articleData }) => {
   const [formData, setFormData] = useState({
     motivo_baja: '',
     usuario_baja: '',
-    cantidad: '', // Agregar campo cantidad
+    cantidad: '',
     imagen: null
   });
 
   const [errors, setErrors] = useState({
     motivo_baja: '',
     usuario_baja: '',
-    cantidad: '', // Agregar campo cantidad
+    cantidad: '',
     imagen: ''
   });
 
   const [previewImage, setPreviewImage] = useState(null);
 
+  // Efecto para resetear el formulario cuando el modal se abre/cierra
+  useEffect(() => {
+    if (isOpen) {
+      resetForm();
+    }
+  }, [isOpen]);
+
+  const resetForm = () => {
+    setFormData({
+      motivo_baja: '',
+      usuario_baja: '',
+      cantidad: '',
+      imagen: null
+    });
+    setErrors({
+      motivo_baja: '',
+      usuario_baja: '',
+      cantidad: '',
+      imagen: ''
+    });
+    setPreviewImage(null);
+  };
+
   const validateForm = () => {
     const newErrors = {
       motivo_baja: '',
       usuario_baja: '',
-      cantidad: '', // Validación para cantidad
+      cantidad: '',
       imagen: ''
     };
 
@@ -37,7 +60,6 @@ const ModalBaja = ({ isOpen, onClose, onSave, articleData }) => {
       isValid = false;
     }
 
-    // Validar cantidad
     if (formData.cantidad.trim() === '') {
       newErrors.cantidad = 'La cantidad es requerida';
       isValid = false;
@@ -56,7 +78,6 @@ const ModalBaja = ({ isOpen, onClose, onSave, articleData }) => {
       ...prevState,
       [name]: value
     }));
-    // Clear error when user starts typing
     setErrors(prev => ({
       ...prev,
       [name]: ''
@@ -66,7 +87,7 @@ const ModalBaja = ({ isOpen, onClose, onSave, articleData }) => {
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
-      if (file.size > 5000000) { // 5MB limit
+      if (file.size > 5000000) {
         setErrors(prev => ({
           ...prev,
           imagen: 'La imagen no debe superar 5MB'
@@ -108,7 +129,7 @@ const ModalBaja = ({ isOpen, onClose, onSave, articleData }) => {
       const sendData = new FormData();
       sendData.append('motivo_baja', formData.motivo_baja);
       sendData.append('usuario_baja', formData.usuario_baja);
-      sendData.append('cantidad', formData.cantidad); // Agregar cantidad
+      sendData.append('cantidad', formData.cantidad);
       if (formData.imagen) {
         sendData.append('imagen', formData.imagen);
       }
