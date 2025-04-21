@@ -332,17 +332,11 @@ const ArticulosAdministrativos = ({ articulos = [], reloadArticulos }) => {
       alert(`Error al eliminar el artículo: ${error.message}`);
     }
   };
-  const [observacionModalKey, setObservacionModalKey] = useState(0);
+
   const handleDeleteClick = (row) => {
     setArticuloToDelete(row);
-    setObservacionModalKey(prevKey => prevKey + 1); // Force recreate the modal
     setIsObservacionModalOpen(true);
   };
-// Update the function that closes the modal
-const handleObservacionModalClose = () => {
-  setIsObservacionModalOpen(false);
-};
-  
 
   const handleObservacionSave = (observacion) => {
     setIsObservacionModalOpen(false);
@@ -357,10 +351,9 @@ const handleObservacionModalClose = () => {
   return (
     <div className="">
     <ModalObservacion
-     key={observacionModalKey} // Add this key prop
-     isOpen={isObservacionModalOpen}
-     onClose={handleObservacionModalClose}
-     onSave={handleObservacionSave}
+      isOpen={isObservacionModalOpen}
+      onClose={() => setIsObservacionModalOpen(false)}
+      onSave={handleObservacionSave}
     />
 
     <ModalConfirmacion

@@ -154,7 +154,6 @@ const useArticulosBaja = () => {
   
     const filteredRows = rows.filter((row) => {
       const searchFields = [
-        row[1] || '', // Descripción
         row[3] || '', // Descripción
         row[4] || '', // Proveedor
         row[5] || '', // Ubicación
