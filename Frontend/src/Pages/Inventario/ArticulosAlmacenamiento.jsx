@@ -35,7 +35,9 @@ const ArticulosAlmacenamiento = () => {
         salida: articulo.salida,
         cantidad: articulo.cantidad
       }));
-      setTableData(formattedData);
+      if (JSON.stringify(tableData) !== JSON.stringify(formattedData)) {
+        setTableData(formattedData);
+      }
     }
   }, [filteredArticulos]);
 

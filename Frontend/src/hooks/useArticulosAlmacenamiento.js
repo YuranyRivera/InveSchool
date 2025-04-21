@@ -30,7 +30,7 @@ export const useArticulos = () => {
 
   const updateArticulo = async (id, updatedData) => {
     try {
-      const response = await fetch(`https://inventarioschool-v1.onrender.com/api/articulos/${id}`, {
+      const response = await fetch(`http://localhost:4000/api/articulos/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedData),
@@ -51,7 +51,7 @@ export const useArticulos = () => {
   const deleteArticulo = async (id, formData) => {
     try {
       // Paso 1: Crear el reporte de baja
-      const bajaResponse = await fetch(`https://inventarioschool-v1.onrender.com/api/articulos-baja/${id}`, {
+      const bajaResponse = await fetch(`http://localhost:4000/api/articulos-baja/${id}`, {
         method: 'POST',
         body: formData
       });
