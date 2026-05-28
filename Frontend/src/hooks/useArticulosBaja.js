@@ -130,7 +130,7 @@ const useArticulosBaja = () => {
           body: rows.map((row) => columns.map((col) => row[col.dataKey])),
           theme: 'striped',
           headStyles: {
-            fillColor: [0, 163, 5],
+            fillColor: [59, 130, 246],
             textColor: [255, 255, 255],
           },
           styles: {

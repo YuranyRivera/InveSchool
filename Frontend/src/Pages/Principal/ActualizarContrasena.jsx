@@ -116,7 +116,7 @@ const ActualizarContrasena = () => {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center relative bg-gray-100">
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#1e3a5f] via-[#2563EB] to-[#1d4ed8]"></div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#1e3a5f] via-[#3B82F6] to-[#2563EB]"></div>
       <div className="absolute  max-[768px]:justify-center w-full md:w-[80%] h-full md:h-[80%] top-0 md:top-[10%] left-0 md:left-2/4 transform md:-translate-x-1/2 bg-white bg-opacity-50 rounded-none md:rounded-lg flex flex-col md:flex-row">
         {/* Columna izquierda - Oculta en pantallas pequeñas y medianas */}
         <div className="hidden md:flex md:w-1/2 flex-col justify-center space-y-4 p-6 md:p-20 bg-cover bg-center">
@@ -128,8 +128,12 @@ const ActualizarContrasena = () => {
              {/* Columna derecha - Visible en todas las pantallas */}
              <div className="w-full md:w-full lg:w-1/2 bg-white flex flex-col justify-center items-center p-6 md:p-10">
             <div className="mb-6 flex flex-col items-center gap-2">
-              <div className="flex items-center justify-center w-14 h-14 bg-[#2563EB] rounded-xl">
-                <span className="text-white font-bold text-2xl">IS</span>
+              <div className="flex items-center justify-center w-14 h-14 bg-[#3B82F6] rounded-xl">
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <polyline points="3.27 6.96 12 12.01 20.73 6.96" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                  <line x1="12" y1="22.08" x2="12" y2="12" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </div>
               <span className="text-xl font-bold text-gray-800 tracking-tight">InveSchool</span>
             </div>

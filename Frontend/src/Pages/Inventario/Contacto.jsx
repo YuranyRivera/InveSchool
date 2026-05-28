@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import MainLayout from '../../Layouts/DashboardLayout';
 import InputField from '../../Components/InputField';
 import SelectRole from '../../Components/SelectRole';
@@ -164,7 +164,7 @@ const Contactos = () => {
                   <button
                     type="button"
                     onClick={toggleModal}
-                    className="bg-[#2563EB] hover:bg-green-700 font-semibold overflow-hidden border border-verde group w-[180px] h-[50px] py-[10px] rounded-[8px] mt-3 text-white"
+                    className="bg-[#3B82F6] hover:bg-[#2563EB] font-semibold overflow-hidden border border-[#3B82F6] group w-[180px] h-[50px] py-[10px] rounded-[8px] mt-3 text-white"
                   >
                     Ver Contactos
                   </button>

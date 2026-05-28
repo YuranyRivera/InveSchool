@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import * as XLSX from 'xlsx'; // Para exportar a Excel
 import jsPDF from 'jspdf'; // Para generar PDF
 import 'jspdf-autotable'; // Para la tabla en PDF
@@ -90,7 +90,7 @@ const ModalInforme = ({ isOpen, onClose, data }) => {
           lineWidth: 0.1, // Grosor de las líneas de la tabla
         },
         headStyles: {
-          fillColor: [0, 163, 5], // Fondo verde para el encabezado
+          fillColor: [59, 130, 246], // Fondo verde para el encabezado
           textColor: [255, 255, 255], // Texto blanco en el encabezado
           lineWidth: 0.5, // Grosor de las líneas del encabezado
           fontSize: 10, // Tamaño de la letra del encabezado
@@ -121,13 +121,13 @@ const ModalInforme = ({ isOpen, onClose, data }) => {
           <div className="flex flex-col sm:flex-row gap-3 mb-6">
             <button
               onClick={exportToExcel}
-              className="bg-[#2563EB] text-white py-2 px-4 rounded hover:bg-green-700 transition-colors flex items-center justify-center"
+              className="bg-[#3B82F6] text-white py-2 px-4 rounded hover:bg-[#2563EB] transition-colors flex items-center justify-center"
             >
               <i className="fas fa-file-excel mr-2"></i> Exportar a Excel
             </button>
             <button
               onClick={exportToPDF}
-              className="bg-white text-green-600 py-2 px-4 border border-green-600 rounded hover:bg-[#2563EB] hover:text-white transition-colors flex items-center justify-center"
+              className="bg-white text-[#3B82F6] py-2 px-4 border border-[#3B82F6] rounded hover:bg-[#3B82F6] hover:text-white transition-colors flex items-center justify-center"
             >
               <i className="fas fa-file-pdf mr-2"></i> Generar PDF
             </button>
@@ -137,7 +137,7 @@ const ModalInforme = ({ isOpen, onClose, data }) => {
           <div className="hidden md:block overflow-x-auto">
             <table className="w-full table-auto rounded-lg overflow-hidden shadow-lg">
               <thead>
-                <tr className="bg-[#2563EB] text-white">
+                <tr className="bg-[#3B82F6] text-white">
                   {headers.map((header, index) => (
                     <th key={index} className="px-4 py-2 text-left">{header}</th>
                   ))}

@@ -65,7 +65,7 @@ const TableEntrada = ({ headers, rows, setRows, reloadArticulos }) => {
       <div className="hidden md:block overflow-x-auto">
         <table className="w-full table-auto rounded-lg overflow-hidden shadow-lg">
           <thead>
-            <tr className="bg-[#2563EB] text-white">
+            <tr className="bg-[#3B82F6] text-white">
               {headers.map((header, index) => (
                 <th key={index} className="px-4 py-2 text-left">{header}</th>
               ))}
@@ -86,7 +86,7 @@ const TableEntrada = ({ headers, rows, setRows, reloadArticulos }) => {
                     <button
                       onClick={() => handleOpenModal(row)}
                       disabled={loading}
-                      className="bg-[#2563EB] text-white py-1 px-3 rounded flex items-center hover:bg-green-700 transition-colors"
+                      className="bg-[#3B82F6] text-white py-1 px-3 rounded flex items-center hover:bg-[#2563EB] transition-colors"
                     >
                       <i className="fas fa-file-alt mr-2"></i> 
                       {loading ? 'Cargando...' : 'Informe'}
@@ -123,7 +123,7 @@ const TableEntrada = ({ headers, rows, setRows, reloadArticulos }) => {
               <button
                 onClick={() => handleOpenModal(row)}
                 disabled={loading}
-                className="bg-[#2563EB] text-white py-2 px-3 rounded flex-1 hover:bg-green-700 transition-colors flex justify-center items-center"
+                className="bg-[#3B82F6] text-white py-2 px-3 rounded flex-1 hover:bg-[#2563EB] transition-colors flex justify-center items-center"
               >
                 <i className="fas fa-file-alt mr-2"></i> 
                 {loading ? 'Cargando...' : 'Informe'}

@@ -1,4 +1,4 @@
-// ExcelExportButton.js
+﻿// ExcelExportButton.js
 import React from 'react';
 import * as XLSX from 'xlsx';
 
@@ -31,7 +31,7 @@ const ExcelExportButton = ({ filteredData, allData }) => {
   return (
     <button
       onClick={exportToExcel}
-      className="bg-[#2563EB] text-white py-2 px-4 rounded hover:bg-green-700"
+      className="bg-[#3B82F6] text-white py-2 px-4 rounded hover:bg-[#2563EB]"
     >
       <i className="fas fa-file-excel mr-2"></i> Excel
     </button>

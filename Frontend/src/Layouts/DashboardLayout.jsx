@@ -46,7 +46,7 @@ const DashboardLayout = ({ children }) => {
       {!isSidebarOpen && (
         <button 
           onClick={() => setIsSidebarOpen(true)}
-          className="md:hidden fixed top-4 left-4 z-50 bg-[#2563EB] p-2 rounded-md"
+          className="md:hidden fixed top-4 left-4 z-50 bg-[#3B82F6] p-2 rounded-md"
         >
           <i className="fas fa-bars text-white"></i>
         </button>

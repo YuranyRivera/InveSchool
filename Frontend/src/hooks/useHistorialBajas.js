@@ -166,7 +166,7 @@ export const useHistorialBajas = (createImageButton, createPDFButton) => {
         head: [columns],  // Encabezados
         body: dataRows,   // Datos corregidos
         theme: 'striped',
-        headStyles: { fillColor: [0, 163, 5], textColor: [255, 255, 255] },
+        headStyles: { fillColor: [59, 130, 246], textColor: [255, 255, 255] },
         styles: { fontSize: 9, cellPadding: 3, halign: 'center', valign: 'middle' },
         columnStyles: {
           // Ajustar el ancho de la columna "Motivo de Baja" y permitir el salto de línea
@@ -199,7 +199,7 @@ export const useHistorialBajas = (createImageButton, createPDFButton) => {
     const doc = new jsPDF({ orientation: 'portrait', unit: 'mm', format: 'a4' });
     
     const colors = {
-      primary: [0, 163, 5], 
+      primary: [59, 130, 246], 
       secondary: [88, 88, 88],
       text: [51, 51, 51],
       accent: [242, 242, 242]

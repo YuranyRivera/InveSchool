@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 const CategorySelect = ({ value, onChange, error, disabled }) => {
   const ubicaciones = [

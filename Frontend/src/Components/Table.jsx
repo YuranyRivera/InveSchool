@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 
 const Table = ({ title, headers, rows }) => {
   return (
@@ -9,7 +9,7 @@ const Table = ({ title, headers, rows }) => {
       <div className="hidden md:block">
         <table className="min-w-full table-auto rounded-lg overflow-hidden shadow-lg">
           <thead>
-            <tr className="bg-[#2563EB] text-white">
+            <tr className="bg-[#3B82F6] text-white">
               {headers.map((header, index) => (
                 <th key={index} className="px-4 py-2 text-left">{header}</th>
               ))}

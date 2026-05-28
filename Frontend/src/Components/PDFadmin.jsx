@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import { jsPDF } from 'jspdf';
 import 'jspdf-autotable';
 
@@ -56,7 +56,7 @@ const PDFadmin = ({ filteredData, allData }) => {
         body: rows.map((row) => columns.map((col) => row[col.dataKey])),
         theme: 'striped',
         headStyles: {
-          fillColor: [0, 163, 5],
+          fillColor: [59, 130, 246],
           textColor: [255, 255, 255],
         },
         styles: {
@@ -77,7 +77,7 @@ const PDFadmin = ({ filteredData, allData }) => {
 
   return (
     <button
-      className="bg-white text-green-600 py-2 px-4 border-2 border-green-600 rounded hover:text-white hover:bg-[#2563EB]"
+      className="bg-white text-green-600 py-2 px-4 border-2 border-green-600 rounded hover:text-white hover:bg-[#3B82F6]"
       onClick={exportToPDF}
     >
       <i className="fas fa-file-pdf mr-2"></i> PDF

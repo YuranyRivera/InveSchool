@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import JsBarcode from "jsbarcode";
 import { jsPDF } from "jspdf";
 
@@ -28,7 +28,7 @@ const AuxMaintenanceTable = ({
     <div className="hidden md:block">
       <table className="min-w-full table-auto rounded-lg overflow-hidden shadow-lg">
         <thead>
-          <tr className="bg-[#2563EB] text-white">
+          <tr className="bg-[#3B82F6] text-white">
             {headers.map((header, index) => (
               <th key={index} className="px-4 py-2 text-left">
                 {header}
@@ -72,7 +72,7 @@ const AuxMaintenanceTable = ({
                       <button
                         type="button"
                         onClick={handleSave}
-                        className="bg-[#2563EB] text-white py-1 px-3 rounded hover:bg-green-700 transition-colors"
+                        className="bg-[#3B82F6] text-white py-1 px-3 rounded hover:bg-[#2563EB] transition-colors"
                       >
                         Guardar
                       </button>
@@ -89,14 +89,14 @@ const AuxMaintenanceTable = ({
                       <button
                         type="button"
                         onClick={() => onEdit(row, rowIndex)}
-                        className="bg-[#2563EB] text-white py-1 px-2 md:px-3 rounded flex items-center text-xs md:text-sm hover:bg-green-700 transition-colors"
+                        className="bg-[#3B82F6] text-white py-1 px-2 md:px-3 rounded flex items-center text-xs md:text-sm hover:bg-[#2563EB] transition-colors"
                       >
                         <i className="fas fa-pencil-alt mr-1 md:mr-2"></i> Editar
                       </button>
                       <button
                         type="button"
                         onClick={() => onDelete(row)}
-                        className="bg-white text-[#2563EB] py-1 px-2 md:px-3 border-2 border-[#2563EB] rounded flex items-center text-xs md:text-sm hover:bg-green-100 transition-colors"
+                        className="bg-white text-[#3B82F6] py-1 px-2 md:px-3 border-2 border-[#3B82F6] rounded flex items-center text-xs md:text-sm hover:bg-green-100 transition-colors"
                         >
                           <i className="fas fa-trash-alt mr-1 md:mr-2"></i> Dar de baja
                       </button>
@@ -151,7 +151,7 @@ const AuxMaintenanceTable = ({
                 <button
                   type="button"
                   onClick={handleSave}
-                  className="bg-[#2563EB] text-white py-1 px-3 rounded flex-1 hover:bg-green-700 transition-colors"
+                  className="bg-[#3B82F6] text-white py-1 px-3 rounded flex-1 hover:bg-[#2563EB] transition-colors"
                 >
                   Guardar
                 </button>
@@ -168,14 +168,14 @@ const AuxMaintenanceTable = ({
                 <button
                   type="button"
                   onClick={() => onEdit(row, rowIndex)}
-                  className="bg-[#2563EB] text-white py-1 px-3 rounded flex-1 hover:bg-green-700 transition-colors"
+                  className="bg-[#3B82F6] text-white py-1 px-3 rounded flex-1 hover:bg-[#2563EB] transition-colors"
                 >
                   Editar
                 </button>
                 <button
                   type="button"
                   onClick={() => onDelete(row)}
-                  className="bg-white text-[#2563EB] py-1 px-3 border-2 border-[#2563EB] rounded flex-1 hover:bg-green-100 transition-colors"
+                  className="bg-white text-[#3B82F6] py-1 px-3 border-2 border-[#3B82F6] rounded flex-1 hover:bg-green-100 transition-colors"
                 >
                   Eliminar
                 </button>

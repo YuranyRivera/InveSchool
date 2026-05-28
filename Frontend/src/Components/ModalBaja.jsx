@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 
 const ModalBaja = ({ isOpen, onClose, onSave, articleData }) => {
   const [formData, setFormData] = useState({
@@ -182,7 +182,7 @@ const ModalBaja = ({ isOpen, onClose, onSave, articleData }) => {
                 type="file"
                 accept="image/*"
                 onChange={handleImageChange}
-                className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100"
+                className="w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-full file:border-0 file:text-sm file:font-semibold file:bg-blue-50 file:text-blue-600 hover:file:bg-blue-100"
               />
               {errors.imagen && (
                 <p className="text-red-500 text-sm mt-1">{errors.imagen}</p>
@@ -257,7 +257,7 @@ const ModalBaja = ({ isOpen, onClose, onSave, articleData }) => {
         {/* Botones */}
         <div className="flex justify-between items-center mt-6">
           <button
-            className="bg-white hover:bg-[#2563EB] text-green-600 rounded-lg border-2 border-green-600 px-4 py-2 hover:text-white transition duration-300 flex items-center"
+            className="bg-white hover:bg-[#3B82F6] text-green-600 rounded-lg border-2 border-green-600 px-4 py-2 hover:text-white transition duration-300 flex items-center"
             onClick={handleSave}
           >
             <i className="fas fa-check-circle mr-2"></i>

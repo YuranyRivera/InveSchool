@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import ModalRAdm from './ModalR_Adm';
 import ModalRAlm from './ModalR_Alm';
 import ModalAdmin from './ModalAdmin';
@@ -28,15 +28,15 @@ const ButtonGroup = ({ isStorageSelected, onSave, reloadArticulos }) => {
     <div>
       <div className="flex space-x-4">
         <button
-          className="bg-white text-green-600 py-2 px-4 border-2 border-green-600 rounded hover:bg-[#2563EB]"
+          className="bg-white text-green-600 py-2 px-4 border-2 border-green-600 rounded hover:bg-[#3B82F6]"
           onClick={handleOpenAddModal}
         >
           <span className="text-green-600 hover:text-white py-2 px-1">Agregar Artículo</span>
-          <i className="fas fa-plus ml-2 text-white bg-[#2563EB] p-1 rounded-full"></i>
+          <i className="fas fa-plus ml-2 text-white bg-[#3B82F6] p-1 rounded-full"></i>
         </button>
 
         <button
-          className="bg-white text-green-600 py-2 px-4 border-2 border-green-600 rounded hover:text-white hover:bg-[#2563EB]"
+          className="bg-white text-green-600 py-2 px-4 border-2 border-green-600 rounded hover:text-white hover:bg-[#3B82F6]"
           onClick={handleOpenEntradaModal}
         >
       

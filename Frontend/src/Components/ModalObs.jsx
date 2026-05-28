@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 
 const ModalObservacion = ({ isOpen, onClose, onSave }) => {
   const [observacion, setObservacion] = useState('');
@@ -51,7 +51,7 @@ const ModalObservacion = ({ isOpen, onClose, onSave }) => {
         <div className="flex flex-col sm:flex-row justify-between items-center gap-4 mt-4">
           {/* Botón para guardar la observación */}
           <button
-            className="w-full sm:w-auto bg-white hover:bg-[#2563EB] text-green-600 rounded-lg border-2 border-green-600 px-4 py-2 hover:text-white transition duration-300 text-sm sm:text-base"
+            className="w-full sm:w-auto bg-white hover:bg-[#3B82F6] text-green-600 rounded-lg border-2 border-green-600 px-4 py-2 hover:text-white transition duration-300 text-sm sm:text-base"
             onClick={handleSave}
           >
             Guardar

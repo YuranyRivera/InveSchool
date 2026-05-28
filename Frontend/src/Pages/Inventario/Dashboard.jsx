@@ -1,4 +1,4 @@
-import React from 'react';
+﻿import React from 'react';
 import DashboardLayout from '../../Layouts/DashboardLayout';
 import Table from '../../Components/Table';
 import { Pie, Bar } from 'react-chartjs-2';

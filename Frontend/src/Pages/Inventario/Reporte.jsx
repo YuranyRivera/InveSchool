@@ -127,7 +127,7 @@ const Example = () => {
       head: [['Descripción', 'Proveedor', 'Estado']],
       body: tableData,
       headStyles: {
-        fillColor: [0, 163, 5], // #2563EB in RGB
+        fillColor: [59, 130, 246], // #3B82F6 in RGB
         textColor: [255, 255, 255],
         fontSize: 10, // Reduce the font size for the header
         fontStyle: 'bold',
@@ -187,7 +187,7 @@ const Example = () => {
                   checked={selectedOption === option}
                   onChange={handleOptionChange}
                   className="appearance-none h-5 w-5 border border-green-600 rounded-full 
-                    checked:bg-[#2563EB] checked:border-[#2563EB] 
+                    checked:bg-[#3B82F6] checked:border-[#3B82F6] 
                     focus:outline-none transition duration-200 mr-2 cursor-pointer"
                 />
                 <span className="text-gray-700">
@@ -204,7 +204,7 @@ const Example = () => {
         {selectedProveedor && productos.length > 0 && (
             <button
               onClick={generatePDF}
-              className="bg-white text-green-600 py-2 px-4 border-2 border-green-600 rounded hover:text-white hover:bg-[#2563EB]"
+              className="bg-white text-green-600 py-2 px-4 border-2 border-green-600 rounded hover:text-white hover:bg-[#3B82F6]"
             >
          <i className="fas fa-file-pdf mr-2"></i>
               Generar PDF
@@ -264,7 +264,7 @@ const Example = () => {
           <div className="hidden md:block overflow-x-auto">
             <table className="min-w-full table-auto rounded-lg overflow-hidden shadow-lg">
               <thead>
-                <tr className="bg-[#2563EB] text-white">
+                <tr className="bg-[#3B82F6] text-white">
                   <th className="px-4 py-3 text-left">Descripción</th>
                   <th className="px-4 py-3 text-left">Proveedor</th>
                   <th className="px-4 py-3 text-left">Estado</th>

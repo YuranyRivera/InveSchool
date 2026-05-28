@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import ProductSelect from './ProductSelect';
 import EstadoSelect from './EstadoSelect';
 import BotonPrincipal from './Boton';
@@ -224,7 +224,7 @@ if (!responsable || !responsable.trim()) {
         <div className="mb-4 overflow-y-auto max-h-[300px]">
           <table className="min-w-full table-auto">
             <thead>
-              <tr className="bg-[#2563EB] text-white">
+              <tr className="bg-[#3B82F6] text-white">
                 <th className="px-4 py-2">Producto</th>
                 <th className="px-4 py-2">Cantidad</th>
               </tr>
