@@ -19,10 +19,11 @@ const PORT = 4000;
 
 // Lista de orígenes permitidos
 const allowedOrigins = [
-  'http://localhost:5173',   // Local development
-  'http://127.0.0.1:5173',   // Otra variante local
-  'https://front-inventarioschool-v1.onrender.com', // Frontend en Render
-  'https://inventarioschool-v1.onrender.com', // Backend en Render
+  'http://localhost:5173',
+  'http://127.0.0.1:5173',
+  'https://inveschool.netlify.app',
+  'https://front-inventarioschool-v1.onrender.com',
+  'https://inventarioschool-v1.onrender.com',
 ];
 
 // Configuración de CORS
