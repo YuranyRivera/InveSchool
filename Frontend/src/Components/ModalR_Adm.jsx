@@ -261,7 +261,7 @@ const ModalSalida = ({ isOpen, onClose }) => {
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
                 <thead>
-                  <tr className="bg-[#00A305] text-white">
+                  <tr className="bg-[#2563EB] text-white">
                     <th className="px-3 py-2 sm:px-4 sm:py-3 text-left text-xs sm:text-sm font-medium">
                       Producto
                     </th>

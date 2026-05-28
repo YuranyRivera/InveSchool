@@ -8,7 +8,7 @@ const Table = ({ title, headers, rows, onDelete }) => {
         {/* Tabla para pantallas grandes */}
         <table className="min-w-full table-auto rounded-lg overflow-hidden shadow-lg hidden md:table">
           <thead>
-            <tr className="bg-[#00A305] text-white">
+            <tr className="bg-[#2563EB] text-white">
               {headers.map((header, index) => (
                 <th key={index} className="px-4 py-2 text-left">{header}</th>
               ))}
@@ -24,7 +24,7 @@ const Table = ({ title, headers, rows, onDelete }) => {
                   <td className="px-4 py-2">{row.rol}</td>
                   <td className="px-4 py-2">
                     <button
-                      className="bg-[#00A305] text-white py-1 px-3 rounded"
+                      className="bg-[#2563EB] text-white py-1 px-3 rounded"
                       onClick={() => onDelete(row.id)}
                     >
                       Eliminar
@@ -60,7 +60,7 @@ const Table = ({ title, headers, rows, onDelete }) => {
                 <div className="mt-4 flex justify-end">
                   <button
                     onClick={() => onDelete(row.id)}
-                    className="bg-[#00A305] text-white py-1 px-3 rounded"
+                    className="bg-[#2563EB] text-white py-1 px-3 rounded"
                   >
                     Eliminar
                   </button>

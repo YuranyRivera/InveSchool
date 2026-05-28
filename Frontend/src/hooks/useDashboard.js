@@ -23,7 +23,7 @@ const useDashboard = () => {
       {
         label: 'Distribución de Artículos',
         data: [totalArticulosActivos, totalArticulosInactivos],
-        backgroundColor: ['#00A305', '#FF5733'],
+        backgroundColor: ['#2563EB', '#FF5733'],
         borderColor: 'rgba(255, 255, 255, 1)',
         borderWidth: 1,
       },
@@ -36,7 +36,7 @@ const useDashboard = () => {
       {
         label: 'Cantidad',
         data: [totalArticulosAlmacenamiento, totalHistorialBajas],
-        backgroundColor: ['#00A305', '#FF5733'],
+        backgroundColor: ['#2563EB', '#FF5733'],
         borderColor: ['#FFEB50', '#FF5733'],
         borderWidth: 1,
       },

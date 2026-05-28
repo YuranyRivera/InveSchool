@@ -164,7 +164,7 @@ const Contactos = () => {
                   <button
                     type="button"
                     onClick={toggleModal}
-                    className="bg-[#00A305] hover:bg-green-700 font-semibold overflow-hidden border border-verde group w-[180px] h-[50px] py-[10px] rounded-[8px] mt-3 text-white"
+                    className="bg-[#2563EB] hover:bg-green-700 font-semibold overflow-hidden border border-verde group w-[180px] h-[50px] py-[10px] rounded-[8px] mt-3 text-white"
                   >
                     Ver Contactos
                   </button>

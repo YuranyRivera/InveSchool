@@ -257,7 +257,7 @@ const ModalBaja = ({ isOpen, onClose, onSave, articleData }) => {
         {/* Botones */}
         <div className="flex justify-between items-center mt-6">
           <button
-            className="bg-white hover:bg-[#00A305] text-green-600 rounded-lg border-2 border-green-600 px-4 py-2 hover:text-white transition duration-300 flex items-center"
+            className="bg-white hover:bg-[#2563EB] text-green-600 rounded-lg border-2 border-green-600 px-4 py-2 hover:text-white transition duration-300 flex items-center"
             onClick={handleSave}
           >
             <i className="fas fa-check-circle mr-2"></i>

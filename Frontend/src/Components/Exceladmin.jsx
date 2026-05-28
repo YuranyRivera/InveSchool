@@ -29,7 +29,7 @@ const ExcelExportButton = ({ filteredData, allData }) => {
   return (
     <button
       onClick={exportToExcel}
-      className="bg-[#00A305] text-white py-2 px-4 rounded hover:bg-green-700"
+      className="bg-[#2563EB] text-white py-2 px-4 rounded hover:bg-green-700"
     >
       <i className="fas fa-file-excel mr-2"></i> Excel
     </button>

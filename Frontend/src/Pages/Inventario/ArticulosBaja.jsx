@@ -101,7 +101,7 @@ const Example = () => {
                   checked={selectedOption === option}
                   onChange={handleOptionChange}
                   className="appearance-none h-5 w-5 border border-green-600 rounded-full 
-                    checked:bg-[#00A305] checked:border-[#00A305] 
+                    checked:bg-[#2563EB] checked:border-[#2563EB] 
                     focus:outline-none transition duration-200 mr-2 cursor-pointer"
                 />
                 <span className="text-gray-700">
@@ -131,13 +131,13 @@ const Example = () => {
                 <div className="flex gap-1">
                   <button
                     onClick={exportToPDF}
-                    className="bg-white text-green-600 py-2 px-4 border-2 border-green-600 rounded hover:text-white hover:bg-[#00A305] whitespace-nowrap"
+                    className="bg-white text-green-600 py-2 px-4 border-2 border-green-600 rounded hover:text-white hover:bg-[#2563EB] whitespace-nowrap"
                   >
                     <i className="fas fa-file-pdf mr-2"></i> PDF
                   </button>
                   <button
                     onClick={exportToExcel}
-                    className="bg-[#00A305] text-white py-2 px-4 rounded hover:bg-green-700 whitespace-nowrap"
+                    className="bg-[#2563EB] text-white py-2 px-4 rounded hover:bg-green-700 whitespace-nowrap"
                   >
                     <i className="fas fa-file-excel mr-2"></i> Excel
                   </button>

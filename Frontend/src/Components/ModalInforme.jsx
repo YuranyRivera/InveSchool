@@ -121,13 +121,13 @@ const ModalInforme = ({ isOpen, onClose, data }) => {
           <div className="flex flex-col sm:flex-row gap-3 mb-6">
             <button
               onClick={exportToExcel}
-              className="bg-[#00A305] text-white py-2 px-4 rounded hover:bg-green-700 transition-colors flex items-center justify-center"
+              className="bg-[#2563EB] text-white py-2 px-4 rounded hover:bg-green-700 transition-colors flex items-center justify-center"
             >
               <i className="fas fa-file-excel mr-2"></i> Exportar a Excel
             </button>
             <button
               onClick={exportToPDF}
-              className="bg-white text-green-600 py-2 px-4 border border-green-600 rounded hover:bg-[#00A305] hover:text-white transition-colors flex items-center justify-center"
+              className="bg-white text-green-600 py-2 px-4 border border-green-600 rounded hover:bg-[#2563EB] hover:text-white transition-colors flex items-center justify-center"
             >
               <i className="fas fa-file-pdf mr-2"></i> Generar PDF
             </button>
@@ -137,7 +137,7 @@ const ModalInforme = ({ isOpen, onClose, data }) => {
           <div className="hidden md:block overflow-x-auto">
             <table className="w-full table-auto rounded-lg overflow-hidden shadow-lg">
               <thead>
-                <tr className="bg-[#00A305] text-white">
+                <tr className="bg-[#2563EB] text-white">
                   {headers.map((header, index) => (
                     <th key={index} className="px-4 py-2 text-left">{header}</th>
                   ))}

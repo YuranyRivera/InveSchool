@@ -84,14 +84,7 @@ const Login = () => {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center relative bg-gray-100">
-      <div className="absolute inset-0 z-0">
-        <img
-          src="/Img/colegio.png"
-          alt="Imagen del colegio"
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-      </div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#1e3a5f] via-[#2563EB] to-[#1d4ed8]"></div>
 
       {/* Login Container */}
 
@@ -99,21 +92,20 @@ const Login = () => {
         {/* Columna izquierda - Oculta en pantallas pequeñas y medianas */}
         <div className="hidden md:flex md:w-1/2 flex-col justify-center space-y-4 p-6 md:p-20 bg-cover bg-center">
           <h2 className="font-serif text-[24px] md:text-[50px] break-words text-white font-montagu text-center md:text-left">
-            ¡Trabajemos juntos!
+            Gestiona tu inventario
           </h2>
           <p className="font-fans text-lg md:text-[30px] text-white font-bold text-center md:text-left">
-            Para crear un ambiente positivo y colaborativo
+            De forma simple, rápida y segura
           </p>
         </div>
 
         {/* Columna derecha - Visible en todas las pantallas */}
         <div className="w-full md:w-full lg:w-1/2 bg-white flex flex-col justify-center items-center p-6 md:p-10">
-          <div className="mb-6">
-            <img
-              src="/Img/logo.png"
-              alt="Logo del colegio"
-              className="w-20 md:w-32 h-auto"
-            />
+          <div className="mb-6 flex flex-col items-center gap-2">
+            <div className="flex items-center justify-center w-14 h-14 bg-[#2563EB] rounded-xl">
+              <span className="text-white font-bold text-2xl">IS</span>
+            </div>
+            <span className="text-xl font-bold text-gray-800 tracking-tight">InveSchool</span>
           </div>
           <form className="space-y-4 w-full max-w-sm" onSubmit={handleSubmit}>
             <h2 className="text-center text-2xl md:text-4xl font-josefin">
@@ -171,7 +163,7 @@ const Login = () => {
             <div className="flex justify-center">
               <button
                 type="submit"
-                className={`bg-[#00A305] text-white hover:bg-green-700 relative cursor-pointer font-semibold overflow-hidden border border-verde group w-[180px] h-[50px] py-[10px] rounded-[8px] mt-3 self-center `}
+                className={`bg-[#2563EB] text-white hover:bg-[#1d4ed8] relative cursor-pointer font-semibold overflow-hidden border border-[#2563EB] group w-[180px] h-[50px] py-[10px] rounded-[8px] mt-3 self-center`}
               >
                 Iniciar sesión
               </button>

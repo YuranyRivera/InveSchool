@@ -67,7 +67,7 @@ const PDFExportButton = ({ filteredData, allData }) => {
 
   return (
     <button
-      className="bg-white text-green-600 py-2 px-4 border-2 border-green-600 rounded hover:text-white hover:bg-[#00A305]"
+      className="bg-white text-green-600 py-2 px-4 border-2 border-green-600 rounded hover:text-white hover:bg-[#2563EB]"
       onClick={exportToPDF}
     >
       <i className="fas fa-file-pdf mr-2"></i> PDF

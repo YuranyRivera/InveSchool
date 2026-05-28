@@ -9,7 +9,7 @@ const Table = ({ title, headers, rows }) => {
       <div className="hidden md:block">
         <table className="min-w-full table-auto rounded-lg overflow-hidden shadow-lg">
           <thead>
-            <tr className="bg-[#00A305] text-white">
+            <tr className="bg-[#2563EB] text-white">
               {headers.map((header, index) => (
                 <th key={index} className="px-4 py-2 text-left">{header}</th>
               ))}

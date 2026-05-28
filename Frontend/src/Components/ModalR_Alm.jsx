@@ -224,7 +224,7 @@ if (!responsable || !responsable.trim()) {
         <div className="mb-4 overflow-y-auto max-h-[300px]">
           <table className="min-w-full table-auto">
             <thead>
-              <tr className="bg-[#00A305] text-white">
+              <tr className="bg-[#2563EB] text-white">
                 <th className="px-4 py-2">Producto</th>
                 <th className="px-4 py-2">Cantidad</th>
               </tr>

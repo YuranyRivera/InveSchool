@@ -116,15 +116,7 @@ const ActualizarContrasena = () => {
 
   return (
     <div className="min-h-screen w-full flex items-center justify-center relative bg-gray-100">
-          <div className="absolute inset-0 z-0">
-      <img 
-        src="/Img/colegio.png"
-        alt="Imagen del colegio" 
-        className="w-full h-full object-cover" 
-        
-      />
-            <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-      </div>
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-[#1e3a5f] via-[#2563EB] to-[#1d4ed8]"></div>
       <div className="absolute  max-[768px]:justify-center w-full md:w-[80%] h-full md:h-[80%] top-0 md:top-[10%] left-0 md:left-2/4 transform md:-translate-x-1/2 bg-white bg-opacity-50 rounded-none md:rounded-lg flex flex-col md:flex-row">
         {/* Columna izquierda - Oculta en pantallas pequeñas y medianas */}
         <div className="hidden md:flex md:w-1/2 flex-col justify-center space-y-4 p-6 md:p-20 bg-cover bg-center">
@@ -135,13 +127,12 @@ const ActualizarContrasena = () => {
 
              {/* Columna derecha - Visible en todas las pantallas */}
              <div className="w-full md:w-full lg:w-1/2 bg-white flex flex-col justify-center items-center p-6 md:p-10">
-            <div className="mb-6">
-            <img 
-              src="/Img/logo.png"
-              alt="Logo del colegio"
-              className="w-20 md:w-32 h-auto"
-            />
-          </div>
+            <div className="mb-6 flex flex-col items-center gap-2">
+              <div className="flex items-center justify-center w-14 h-14 bg-[#2563EB] rounded-xl">
+                <span className="text-white font-bold text-2xl">IS</span>
+              </div>
+              <span className="text-xl font-bold text-gray-800 tracking-tight">InveSchool</span>
+            </div>
           <form className="space-y-4 w-full max-w-sm justify-center items-center" onSubmit={handleSubmit}>
             <h2 className="text-center text-4xl font-josefin flex-auto">Actualizar Contraseña</h2>
             <div className="relative">

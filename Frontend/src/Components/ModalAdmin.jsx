@@ -206,7 +206,7 @@ const ModalAdmin = ({ isOpen, onClose, refreshArticulos }) => {
           ))}
           <button
             onClick={handleAddRow}
-            className="bg-[#00A305] text-white px-4 py-2 rounded hover:bg-green-700 w-full"
+            className="bg-[#2563EB] text-white px-4 py-2 rounded hover:bg-green-700 w-full"
             disabled={loading}
           >
             Agregar Artículo
@@ -216,7 +216,7 @@ const ModalAdmin = ({ isOpen, onClose, refreshArticulos }) => {
         <div className="hidden sm:block overflow-x-auto">
           <table className="min-w-full table-auto">
             <thead>
-              <tr className="bg-[#00A305] text-white">
+              <tr className="bg-[#2563EB] text-white">
                 {headers.map((header, index) => (
                   <th key={index} className="px-4 py-2 text-left text-sm lg:text-base">
                     {header}
@@ -264,7 +264,7 @@ const ModalAdmin = ({ isOpen, onClose, refreshArticulos }) => {
                     ) : rowIndex === rows.length - 1 ? (
                       <button
                         onClick={handleAddRow}
-                        className="bg-[#00A305] text-white px-3 py-1 rounded hover:bg-green-700 text-sm lg:text-base"
+                        className="bg-[#2563EB] text-white px-3 py-1 rounded hover:bg-green-700 text-sm lg:text-base"
                         disabled={loading}
                       >
                          <i className="fas fa-plus mr-1"></i> Agregar 
@@ -280,14 +280,14 @@ const ModalAdmin = ({ isOpen, onClose, refreshArticulos }) => {
         <div className="flex justify-end space-x-4 mt-4">
           <button
             onClick={onClose}
-            className="bg-white hover:bg-[#00A305] text-green-600 border-2 border-green-600 hover:text-white transition duration-300 rounded-[8px] px-3 py-2 text-sm sm:px-4"
+            className="bg-white hover:bg-[#2563EB] text-green-600 border-2 border-green-600 hover:text-white transition duration-300 rounded-[8px] px-3 py-2 text-sm sm:px-4"
             disabled={loading}
           >
             Cancelar
           </button>
           <button
             onClick={handleSave}
-            className="bg-[#00A305] text-white px-4 py-2 rounded hover:bg-green-700"
+            className="bg-[#2563EB] text-white px-4 py-2 rounded hover:bg-green-700"
             disabled={loading}
           >
             {loading ? 'Guardando...' : 'Guardar'}
