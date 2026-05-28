@@ -1,4 +1,5 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
+import API_URL from '../config/api.js';
 
 const useArticulos = (refreshArticulos) => {
   const [articulos, setArticulos] = useState([]);
@@ -8,7 +9,7 @@ const useArticulos = (refreshArticulos) => {
   const addArticulos = async (articuloData) => {
     setLoading(true);
     try {
-      const response = await fetch('https://inventarioschool-v1.onrender.com/api/articulos', {
+      const response = await fetch(`${API_URL}/api/articulos`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

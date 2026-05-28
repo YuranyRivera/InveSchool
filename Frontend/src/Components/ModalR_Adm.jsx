@@ -1,9 +1,10 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import Select from 'react-select';
 import BotonPrincipal from './Boton';
 import BotonSecundario from './BotonSecundario';
 import { useNavigate } from 'react-router-dom';
 import ModalConfirmacion from './ModalConfirmacion';
+import API_URL from '../config/api.js';
 
 const ModalSalida = ({ isOpen, onClose }) => {
   const navigate = useNavigate();
@@ -102,7 +103,7 @@ const ModalSalida = ({ isOpen, onClose }) => {
     try {
       // Codificar la ubicación para la URL
       const ubicacionCodificada = encodeURIComponent(selectedOption.value);
-      const response = await fetch(`https://inventarioschool-v1.onrender.com/api/productos/${ubicacionCodificada}`);
+      const response = await fetch(`${API_URL}/api/productos/${ubicacionCodificada}`);
       const data = await response.json();
   
       if (Array.isArray(data) && data.length > 0) {
@@ -172,7 +173,7 @@ const ModalSalida = ({ isOpen, onClose }) => {
           responsable: solicitante,
         };
 
-        const response = await fetch('https://inventarioschool-v1.onrender.com/api/traslados', {
+        const response = await fetch(`${API_URL}/api/traslados`, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(trasladoData),

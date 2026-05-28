@@ -1,3 +1,4 @@
+﻿import API_URL from '../config/api.js';
 // useHistorialBajas.js
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -30,7 +31,7 @@ export const useHistorialBajas = (createImageButton, createPDFButton) => {
   const fetchHistorialBajas = async () => {
     await new Promise(resolve => setTimeout(resolve, 1000));
     try {
-      const response = await fetch('https://inventarioschool-v1.onrender.com/api/articulos-baja-historial');
+      const response = await fetch(`${API_URL}/api/articulos-baja-historial`);
       if (!response.ok) {
         throw new Error('Error al obtener los datos');
       }
@@ -86,7 +87,7 @@ export const useHistorialBajas = (createImageButton, createPDFButton) => {
     setIsLoading(true);
     const id = selectedRowToDelete[0];
     try {
-      const response = await fetch(`https://inventarioschool-v1.onrender.com/api/articulos_baja_historial/${id}`, {
+      const response = await fetch(`${API_URL}/api/articulos_baja_historial/${id}`, {
         method: 'DELETE',
       });
 

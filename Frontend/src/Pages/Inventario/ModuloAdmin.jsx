@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import AuxMaintenanceTable from '../../Components/TablaArt';
 import DashboardLayout from '../../Layouts/DashboardLayout';
 import { Search } from 'lucide-react';
@@ -9,8 +9,8 @@ import ButtonGroup from '../../Components/PDFadmin';
 import ExcelExportButton from '../../Components/Exceladmin';
 import { useNavigate } from 'react-router-dom';
 import '@dotlottie/player-component';
-
-import ModalConfirmacion from '../../Components/ModalConf'; 
+import API_URL from '../../config/api.js';
+import ModalConfirmacion from '../../Components/ModalConf';
 const Moduloadmin = () => {
   const [isLoading, setIsLoading] = useState(true);
   const headers = ['ID','Fecha', 'Ubicación Inicial', 'Producto',  'Código', 'Ubicación Final', 'Responsable'];
@@ -83,7 +83,7 @@ const Moduloadmin = () => {
     const fetchTraslados = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('https://inventarioschool-v1.onrender.com/api/traslados');
+        const response = await fetch(`${API_URL}/api/traslados`);
         const data = await response.json();
 
         const formattedRows = data.map((traslado) => {
@@ -114,7 +114,7 @@ const Moduloadmin = () => {
       const formattedDate = formatDate(editedRowData.fecha);
       const formattedData = { ...editedRowData, fecha: formattedDate };
 
-      const response = await fetch(`https://inventarioschool-v1.onrender.com/api/traslados/${formattedData.id}`, {
+      const response = await fetch(`${API_URL}/api/traslados/${formattedData.id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(formattedData),
@@ -144,7 +144,7 @@ const Moduloadmin = () => {
     const id = rowToDelete.id;
   
     try {
-      const response = await fetch(`https://inventarioschool-v1.onrender.com/api/traslados/${id}`, {
+      const response = await fetch(`${API_URL}/api/traslados/${id}`, {
         method: 'DELETE',
       });
   

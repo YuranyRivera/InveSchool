@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
+import API_URL from '../config/api.js';
 
 const useArticulo = () => {
   const [articulos, setArticulos] = useState([]);
@@ -10,7 +11,7 @@ const useArticulo = () => {
     const fetchArticulos = async () => {
       setIsLoading(true);
       try {
-        const response = await fetch('https://inventarioschool-v1.onrender.com/api/articulos');
+        const response = await fetch(`${API_URL}/api/articulos`);
         
         if (!response.ok) {
           throw new Error(`HTTP error! status: ${response.status}`);

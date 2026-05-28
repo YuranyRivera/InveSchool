@@ -1,6 +1,7 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import CategorySelect from './CategorySelect';
 import useArticulosAdministrativos from '../hooks/useArticulosAdministrativos';
+import API_URL from '../config/api.js';
 
 const ModalAdmin = ({ isOpen, onClose, refreshArticulos }) => {
   if (!isOpen) return null;
@@ -32,7 +33,7 @@ const ModalAdmin = ({ isOpen, onClose, refreshArticulos }) => {
   useEffect(() => {
     const fetchLastId = async () => {
       try {
-        const response = await fetch('https://inventarioschool-v1.onrender.com/api/articulos-administrativos/last-id');
+        const response = await fetch(`${API_URL}/api/articulos-administrativos/last-id`);
         const data = await response.json();
         const newId = data.id ? data.id + 1 : 1;
         setRows([{ id: newId, fecha: '', descripcion: '', proveedor: '', ubicacion: '', observacion: '', precio: '' }]);

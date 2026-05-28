@@ -1,5 +1,6 @@
-import { useState } from 'react';
+﻿import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import API_URL from '../config/api.js';
 
 const MAX_PRECIO = 9999999999;
 
@@ -164,7 +165,7 @@ const useArticulosAdministrativos = (articulos = [], reloadArticulos) => {
         precio: currencyToNumber(editedRowData.precio)
       };
   
-      const response = await fetch(`https://inventarioschool-v1.onrender.com/api/articulos_administrativos/${editedRowData.id}`, {
+      const response = await fetch(`${API_URL}/api/articulos_administrativos/${editedRowData.id}`, {
         method: 'PUT',
         headers: {
           'Content-Type': 'application/json',
@@ -194,7 +195,7 @@ const useArticulosAdministrativos = (articulos = [], reloadArticulos) => {
     }
 
     try {
-      const url = `https://inventarioschool-v1.onrender.com/api/articulos_administrativos/${articuloToDelete.id}`;
+      const url = `${API_URL}/api/articulos_administrativos/${articuloToDelete.id}`;
 
       const response = await fetch(url, {
         method: 'DELETE',

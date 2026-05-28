@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+﻿import React, { useState, useEffect } from "react";
 import Select from "react-select";
 import DashboardLayout from '../../Layouts/DashboardLayout';
 import { useNavigate } from 'react-router-dom';
@@ -6,6 +6,7 @@ import { Download } from 'lucide-react';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import '@dotlottie/player-component';
+import API_URL from '../../config/api.js';
 const Example = () => {
   const [selectedOption, setSelectedOption] = useState('reporte');
   const [selectedProveedor, setSelectedProveedor] = useState(null);
@@ -34,7 +35,7 @@ const Example = () => {
   async function obtenerProveedores() {
     setIsLoading(true);
     try {
-      const response = await fetch("https://inventarioschool-v1.onrender.com/api/proveedores");
+      const response = await fetch(`${API_URL}/api/proveedores`);
       const data = await response.json();
       
       // Aseguramos que cada proveedor tenga un value único
@@ -57,8 +58,8 @@ const Example = () => {
       const proveedorValue = encodeURIComponent(selectedProveedor.value.trim());
       
       const [productosRes, statsRes] = await Promise.all([
-        fetch(`https://inventarioschool-v1.onrender.com/api/productosproveedor?proveedor=${proveedorValue}`),
-        fetch(`https://inventarioschool-v1.onrender.com/api/estadisticas?proveedor=${proveedorValue}`)
+        fetch(`${API_URL}/api/productosproveedor?proveedor=${proveedorValue}`),
+        fetch(`${API_URL}/api/estadisticas?proveedor=${proveedorValue}`)
       ]);
 
       if (!productosRes.ok || !statsRes.ok) {

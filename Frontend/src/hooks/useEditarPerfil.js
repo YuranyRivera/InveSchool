@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { useUser } from '../Context/UserContext';
+import API_URL from '../config/api.js';
 
 const useEditarPerfil = () => {
   const { user, updateUser } = useUser();
@@ -116,7 +117,7 @@ const useEditarPerfil = () => {
     }
 
     try {
-      const response = await fetch('https://inventarioschool-v1.onrender.com/api/update-profile', {
+      const response = await fetch(`${API_URL}/api/update-profile`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import Input from '../../Components/Input';
 import Boton from '../../Components/Boton';
 import ModalConfirmacion from '../../Components/ModalConfirmacion';  // Importación del modal
+import API_URL from '../../config/api.js';
 
 const OlvidarContrasena = () => {
   const [correo, setCorreo] = useState('');
@@ -30,7 +31,7 @@ const OlvidarContrasena = () => {
 
     try {
       // Solicitud POST para recuperar contraseña
-      const response = await fetch('https://inventarioschool-v1.onrender.com/api/reset-password', {
+      const response = await fetch(`${API_URL}/api/reset-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

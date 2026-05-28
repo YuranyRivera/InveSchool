@@ -1,4 +1,5 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
+import API_URL from '../config/api.js';
 
 const useMovimientosAlmacen = (isOpen, onClose, reloadArticulos) => {
   const [selectedProducts, setSelectedProducts] = useState([]);
@@ -17,7 +18,7 @@ const useMovimientosAlmacen = (isOpen, onClose, reloadArticulos) => {
   const fetchProductos = async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://inventarioschool-v1.onrender.com/api/productos');
+      const response = await fetch(`${API_URL}/api/productos`);
       if (!response.ok) {
         throw new Error('Error al obtener productos');
       }
@@ -98,7 +99,7 @@ const useMovimientosAlmacen = (isOpen, onClose, reloadArticulos) => {
 
       console.log('Enviando movimiento:', movimiento);
 
-      const response = await fetch('https://inventarioschool-v1.onrender.com/api/movimientos', {
+      const response = await fetch(`${API_URL}/api/movimientos`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

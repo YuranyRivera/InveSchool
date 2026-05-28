@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
+﻿import { useState, useEffect, useCallback } from 'react';
+import API_URL from '../config/api.js';
 
 // Custom hook for fetching and managing articles
 export const useArticulos = () => {
@@ -9,7 +10,7 @@ export const useArticulos = () => {
   const fetchArticulos = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://inventarioschool-v1.onrender.com/api/articulos');
+      const response = await fetch(`${API_URL}/api/articulos`);
       if (!response.ok) {
         throw new Error('Failed to fetch articles');
       }
@@ -30,7 +31,7 @@ export const useArticulos = () => {
 
   const updateArticulo = async (id, updatedData) => {
     try {
-      const response = await fetch(`http://localhost:4000/api/articulos/${id}`, {
+      const response = await fetch(`${API_URL}/api/articulos/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(updatedData),
@@ -51,7 +52,7 @@ export const useArticulos = () => {
   const deleteArticulo = async (id, formData) => {
     try {
       // Paso 1: Crear el reporte de baja
-      const bajaResponse = await fetch(`http://localhost:4000/api/articulos-baja/${id}`, {
+      const bajaResponse = await fetch(`${API_URL}/api/articulos-baja/${id}`, {
         method: 'POST',
         body: formData
       });
@@ -61,7 +62,7 @@ export const useArticulos = () => {
       }
 
       // Paso 2: Eliminar el artículo
-      const deleteResponse = await fetch(`https://inventarioschool-v1.onrender.com/api/articulos/${id}`, {
+      const deleteResponse = await fetch(`${API_URL}/api/articulos/${id}`, {
         method: 'DELETE'
       });
 

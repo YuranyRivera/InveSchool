@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import Input from "../../Components/Input";
 import BotonPrincipal from "../../Components/Boton";
 import { useUser } from "../../Context/UserContext";
 import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
+import API_URL from '../../config/api.js';
 
 const Login = () => {
   const [correo, setCorreo] = useState("");
@@ -51,7 +52,7 @@ const Login = () => {
 
     try {
       const response = await fetch(
-        "https://inventarioschool-v1.onrender.com/api/login",
+        `${API_URL}/api/login`,
         {
           method: "POST",
           headers: {

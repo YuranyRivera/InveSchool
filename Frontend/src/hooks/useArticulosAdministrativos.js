@@ -1,4 +1,5 @@
-import { useState, useEffect, useCallback } from 'react';
+﻿import { useState, useEffect, useCallback } from 'react';
+import API_URL from '../config/api.js';
 
 const useArticulosAdministrativos = () => {
   const [articulos, setArticulos] = useState([]);
@@ -9,7 +10,7 @@ const useArticulosAdministrativos = () => {
   const fetchArticulos = useCallback(async () => {
     try {
       setLoading(true);
-      const response = await fetch('https://inventarioschool-v1.onrender.com/api/articulos-administrativos');
+      const response = await fetch(`${API_URL}/api/articulos-administrativos`);
       
       if (!response.ok) {
         throw new Error(`HTTP error! status: ${response.status}`);
@@ -37,7 +38,7 @@ const useArticulosAdministrativos = () => {
   const agregarArticulo = async (articulo) => {
     setLoading(true);
     try {
-      const response = await fetch('https://inventarioschool-v1.onrender.com/api/articulos-administrativos', {
+      const response = await fetch(`${API_URL}/api/articulos-administrativos`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

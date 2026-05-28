@@ -1,5 +1,6 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import axios from 'axios';
+import API_URL from '../config/api.js';
 
 export const useContactManagement = () => {
   // Form state
@@ -48,7 +49,7 @@ export const useContactManagement = () => {
   const fetchContactos = async () => {
     setIsLoading(true);
     try {
-      const response = await axios.get('https://inventarioschool-v1.onrender.com/api/usuarios');
+      const response = await axios.get(`${API_URL}/api/usuarios`);
       setContactos(response.data);
     } catch (error) {
       console.error('Error al obtener los usuarios:', error);
@@ -72,7 +73,7 @@ export const useContactManagement = () => {
     setIsLoading(true);
     
     try {
-      await axios.delete(`https://inventarioschool-v1.onrender.com/api/usuarios/${userToDelete}`);
+      await axios.delete(`${API_URL}/api/usuarios/${userToDelete}`);
       await fetchContactos();
       setMessage('Usuario eliminado exitosamente');
       setIsConfirmModalOpen(true);
@@ -145,7 +146,7 @@ export const useContactManagement = () => {
     };
   
     try {
-      await axios.post('https://inventarioschool-v1.onrender.com/api/usuarios', nuevoContacto);
+      await axios.post(`${API_URL}/api/usuarios`, nuevoContacto);
       await fetchContactos();
       setMessage('Usuario guardado exitosamente!');
       setIsConfirmModalOpen(true);

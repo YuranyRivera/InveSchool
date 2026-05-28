@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import AdminArticlesTable from "../../Components/AdminArticlesTable";
 import { useNavigate } from "react-router-dom";
 import CategorySelect from "../../Components/CategorySelect";
@@ -10,6 +10,7 @@ import ModalConfirmacion from "../../Components/ModalConf";
 import ModalObservacion from "../../Components/ModalObs";
 import BarcodeGenerator from "../../Components/BarcodeGenerator";
 import Select from "react-select";
+import API_URL from '../../config/api.js';
 
 const MAX_PRECIO = 9999999999;
 const formatCurrency = (value) => {
@@ -272,7 +273,7 @@ const ArticulosAdministrativos = ({ articulos = [], reloadArticulos }) => {
       };
 
       const response = await fetch(
-        `https://inventarioschool-v1.onrender.com/api/articulos_administrativos/${editedRowData.id}`,
+        `${API_URL}/api/articulos_administrativos/${editedRowData.id}`,
         {
           method: "PUT",
           headers: {
@@ -304,7 +305,7 @@ const ArticulosAdministrativos = ({ articulos = [], reloadArticulos }) => {
     }
 
     try {
-      const url = `https://inventarioschool-v1.onrender.com/api/articulos_administrativos/${articuloToDelete.id}`;
+      const url = `${API_URL}/api/articulos_administrativos/${articuloToDelete.id}`;
 
       const response = await fetch(url, {
         method: "DELETE",

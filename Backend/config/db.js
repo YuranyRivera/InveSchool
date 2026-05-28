@@ -1,13 +1,13 @@
-// Backend/config/db.js
+import 'dotenv/config';
 import pkg from 'pg';
 const { Pool } = pkg;
 
 const pool = new Pool({
-    user: "postgres.clewrkkgnqirnuxtftra",
-    host: "aws-0-us-west-1.pooler.supabase.com",
-    database: "postgres",
-    password: "Solocosfa2024",
-    port: 6543,
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PASSWORD,
+    port: Number(process.env.DB_PORT),
 });
 
 export { pool };

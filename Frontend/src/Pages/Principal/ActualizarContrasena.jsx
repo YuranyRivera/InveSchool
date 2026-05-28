@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import Input from '../../Components/Input';
 import Boton from '../../Components/Boton';
 import ModalConfirmacion from '../../Components/ModalConfirmacion';
+import API_URL from '../../config/api.js';
 
 const ActualizarContrasena = () => {
   const [contrasena, setContrasena] = useState('');
@@ -84,7 +85,7 @@ const ActualizarContrasena = () => {
     try {
       const requestBody = { token, email: correo, newPassword: contrasena };
   
-      const response = await fetch('https://inventarioschool-v1.onrender.com/api/update-password', {
+      const response = await fetch(`${API_URL}/api/update-password`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

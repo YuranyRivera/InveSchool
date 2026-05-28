@@ -1,6 +1,7 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import { Pie, Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement } from 'chart.js';
+import API_URL from '../config/api.js';
 
 ChartJS.register(ArcElement, Tooltip, Legend);
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend, ArcElement);
@@ -65,11 +66,11 @@ const useDashboard = () => {
           historialResponse,
           actividadResponse,
         ] = await Promise.all([
-          fetch('https://inventarioschool-v1.onrender.com/api/total-activos'),
-          fetch('https://inventarioschool-v1.onrender.com/api/total-inactivos'),
-          fetch('https://inventarioschool-v1.onrender.com/api/total-articulos-almacenamiento'),
-          fetch('https://inventarioschool-v1.onrender.com/api/total-historial-bajas'),
-          fetch('https://inventarioschool-v1.onrender.com/api/ultimo-registro'),
+          fetch(`${API_URL}/api/total-activos`),
+          fetch(`${API_URL}/api/total-inactivos`),
+          fetch(`${API_URL}/api/total-articulos-almacenamiento`),
+          fetch(`${API_URL}/api/total-historial-bajas`),
+          fetch(`${API_URL}/api/ultimo-registro`),
         ]);
 
         const activosData = await activosResponse.json();

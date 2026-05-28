@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from 'react';
+﻿import React, { useState, useEffect } from 'react';
 import useArticulos from '../hooks/useArticulos';
+import API_URL from '../config/api.js';
 
 const ModalAlm = ({ isOpen, onClose, onSave }) => {
   if (!isOpen) return null;
@@ -17,7 +18,7 @@ const ModalAlm = ({ isOpen, onClose, onSave }) => {
   useEffect(() => {
     const fetchLastId = async () => {
       try {
-        const response = await fetch('https://inventarioschool-v1.onrender.com/api/articulos/last-id');
+        const response = await fetch(`${API_URL}/api/articulos/last-id`);
         const data = await response.json();
         setRows([{ id: data.id + 1, modulo: '', estante: '', cantidad: '', producto: '', estado: '' }]);
       } catch (error) {

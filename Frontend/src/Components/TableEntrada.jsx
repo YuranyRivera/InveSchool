@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import ModalInforme from './ModalInforme';
 import ModalConfi from './ModalConf';
+import API_URL from '../config/api.js';
 
 const TableEntrada = ({ headers, rows, setRows, reloadArticulos }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -13,7 +14,7 @@ const TableEntrada = ({ headers, rows, setRows, reloadArticulos }) => {
     const movimientoId = row[0];
     setLoading(true);
     try {
-      const response = await fetch(`https://inventarioschool-v1.onrender.com/api/movimiento/${movimientoId}`);
+      const response = await fetch(`${API_URL}/api/movimiento/${movimientoId}`);
       if (!response.ok) throw new Error('Error al obtener los detalles');
       const data = await response.json();
       setModalData(data);
@@ -40,7 +41,7 @@ const TableEntrada = ({ headers, rows, setRows, reloadArticulos }) => {
     setIsDeleteConfirmOpen(false);
     setLoading(true);
     try {
-      const response = await fetch(`https://inventarioschool-v1.onrender.com/api/eliminar-movimiento/${deleteRowId}`, {
+      const response = await fetch(`${API_URL}/api/eliminar-movimiento/${deleteRowId}`, {
         method: 'DELETE',
       });
       if (!response.ok) throw new Error('Error al eliminar el registro');

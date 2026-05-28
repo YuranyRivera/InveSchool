@@ -1,7 +1,8 @@
-import { useState, useEffect } from 'react';
+﻿import { useState, useEffect } from 'react';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import * as XLSX from 'xlsx';
+import API_URL from '../config/api.js';
 
 const useArticulosBaja = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -44,7 +45,7 @@ const useArticulosBaja = () => {
     const fetchArticulosBaja = async () => {
       await new Promise(resolve => setTimeout(resolve, 1000));
       try {
-        const response = await fetch('https://inventarioschool-v1.onrender.com/api/articulos_baja');
+        const response = await fetch(`${API_URL}/api/articulos_baja`);
         if (!response.ok) throw new Error('Error al obtener los datos');
         const data = await response.json();
         const mappedRows = data.map((item) => [
@@ -73,7 +74,7 @@ const useArticulosBaja = () => {
     
       setIsLoading(true);
       try {
-        const response = await fetch(`https://inventarioschool-v1.onrender.com/api/articulos_baja/${id}`, {
+        const response = await fetch(`${API_URL}/api/articulos_baja/${id}`, {
           method: 'DELETE',
         });
     

@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+﻿import React, { useState } from 'react';
 import Sidebar from '../Components/Sidebar';
 import { useNavigate } from 'react-router-dom';
+import API_URL from '../config/api.js';
 
 const DashboardLayout = ({ children }) => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -10,7 +11,7 @@ const DashboardLayout = ({ children }) => {
   const handleLogout = async () => {
     setLoading(true); // Mostrar el loader
     try {
-      await fetch('https://inventarioschool-v1.onrender.com/api/logout', {
+      await fetch(`${API_URL}/api/logout`, {
         method: 'POST',
         credentials: 'include'
       });
