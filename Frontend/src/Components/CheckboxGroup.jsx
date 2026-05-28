@@ -10,7 +10,7 @@ const CheckboxGroup = ({ selected, onChange }) => {
     id="administrativos" 
     name="tipoArticulo"
     checked={selected === 'administrativos'} // Marcado según el estado
-    className="appearance-none h-5 w-5 border border-green-600 rounded-full checked:bg-[#3B82F6] checked:border-[#3B82F6] focus:outline-none transition duration-200 mr-2 cursor-pointer" 
+    className="appearance-none h-5 w-5 border border-[#3B82F6] rounded-full checked:bg-[#3B82F6] checked:border-[#3B82F6] focus:outline-none transition duration-200 mr-2 cursor-pointer" 
     onChange={(e) => onChange(e, 'administrativos')} // Cambié 'administrativo' por 'administrativos'
   />
   <label 
@@ -28,7 +28,7 @@ const CheckboxGroup = ({ selected, onChange }) => {
           id="almacenamiento" 
           name="tipoArticulo"
           checked={selected === 'almacenamiento'} // Marcado según el estado
-          className="appearance-none h-5 w-5 border border-green-600 rounded-full checked:bg-[#3B82F6] checked:border-[#3B82F6] focus:outline-none transition duration-200 mr-2 cursor-pointer" 
+          className="appearance-none h-5 w-5 border border-[#3B82F6] rounded-full checked:bg-[#3B82F6] checked:border-[#3B82F6] focus:outline-none transition duration-200 mr-2 cursor-pointer" 
           onChange={(e) => onChange(e, 'almacenamiento')} 
         />
         <label 

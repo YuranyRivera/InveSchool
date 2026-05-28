@@ -12,7 +12,7 @@ const InputField = ({ label, type, value, onChange, placeholder, name }) => {
         value={value}
         onChange={onChange}
         placeholder={placeholder}
-        className="w-full p-3 text-lg border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-green-600 focus:border-transparent"
+        className="w-full p-3 text-lg border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-[#3B82F6] focus:border-transparent"
       />
     </div>
   );

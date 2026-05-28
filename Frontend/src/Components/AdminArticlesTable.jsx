@@ -96,7 +96,7 @@ const AdminArticlesTable = ({
                       </button>
                       <button
                         onClick={() => onDelete(row)}
-                        className="bg-white text-[#3B82F6] py-1 px-2 md:px-3 border-2 border-[#3B82F6] rounded flex items-center text-xs md:text-sm hover:bg-green-100 transition-colors"
+                        className="bg-white text-[#3B82F6] py-1 px-2 md:px-3 border-2 border-[#3B82F6] rounded flex items-center text-xs md:text-sm hover:bg-blue-50 transition-colors"
                       >
                         <i className="fas fa-trash-alt mr-1 md:mr-2"></i> Dar de baja
                       </button>
@@ -170,7 +170,7 @@ const AdminArticlesTable = ({
                   </button>
                   <button
                     onClick={() => onDelete(row)}
-                    className="bg-white text-[#3B82F6] py-1 px-3 border border-[#3B82F6] rounded text-sm hover:bg-green-100 transition"
+                    className="bg-white text-[#3B82F6] py-1 px-3 border border-[#3B82F6] rounded text-sm hover:bg-blue-50 transition"
                   >
                     Dar de baja
                   </button>

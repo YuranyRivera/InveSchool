@@ -186,7 +186,7 @@ const Example = () => {
                   value={option}
                   checked={selectedOption === option}
                   onChange={handleOptionChange}
-                  className="appearance-none h-5 w-5 border border-green-600 rounded-full 
+                  className="appearance-none h-5 w-5 border border-[#3B82F6] rounded-full 
                     checked:bg-[#3B82F6] checked:border-[#3B82F6] 
                     focus:outline-none transition duration-200 mr-2 cursor-pointer"
                 />
@@ -204,7 +204,7 @@ const Example = () => {
         {selectedProveedor && productos.length > 0 && (
             <button
               onClick={generatePDF}
-              className="bg-white text-green-600 py-2 px-4 border-2 border-green-600 rounded hover:text-white hover:bg-[#3B82F6]"
+              className="bg-white text-[#3B82F6] py-2 px-4 border-2 border-[#3B82F6] rounded hover:text-white hover:bg-[#3B82F6]"
             >
          <i className="fas fa-file-pdf mr-2"></i>
               Generar PDF
@@ -236,7 +236,7 @@ const Example = () => {
             <div className="bg-white rounded-lg shadow-lg p-6 transition-all hover:shadow-xl">
               <div className="text-center">
                 <h2 className="text-lg font-semibold text-gray-700">Activos</h2>
-                <p className="text-3xl font-bold text-green-600 mt-2">
+                <p className="text-3xl font-bold text-[#3B82F6] mt-2">
                   {estadisticas.activos}
                 </p>
               </div>

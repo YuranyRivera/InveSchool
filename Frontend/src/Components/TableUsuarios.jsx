@@ -3,7 +3,7 @@
 const Table = ({ title, headers, rows, onDelete }) => {
   return (
     <div className="p-4">
-      <h2 className="text-xl font-semibold text-green-600 mb-4">{title}</h2>
+      <h2 className="text-xl font-semibold text-[#3B82F6] mb-4">{title}</h2>
       <div className="overflow-y-auto" style={{ maxHeight: '400px' }}>
         {/* Tabla para pantallas grandes */}
         <table className="min-w-full table-auto rounded-lg overflow-hidden shadow-lg hidden md:table">

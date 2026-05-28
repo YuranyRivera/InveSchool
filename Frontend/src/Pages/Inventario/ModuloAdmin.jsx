@@ -269,7 +269,7 @@ const Moduloadmin = () => {
                   value={option}
                   checked={selectedOption === option}
                   onChange={handleOptionChange}
-                  className="appearance-none h-5 w-5 border border-green-600 rounded-full 
+                  className="appearance-none h-5 w-5 border border-[#3B82F6] rounded-full 
                     checked:bg-[#3B82F6] checked:border-[#3B82F6] 
                     focus:outline-none transition duration-200 mr-2 cursor-pointer"
                 />

@@ -280,7 +280,7 @@ const ModalAdmin = ({ isOpen, onClose, refreshArticulos }) => {
         <div className="flex justify-end space-x-4 mt-4">
           <button
             onClick={onClose}
-            className="bg-white hover:bg-[#3B82F6] text-green-600 border-2 border-green-600 hover:text-white transition duration-300 rounded-[8px] px-3 py-2 text-sm sm:px-4"
+            className="bg-white hover:bg-[#3B82F6] text-[#3B82F6] border-2 border-[#3B82F6] hover:text-white transition duration-300 rounded-[8px] px-3 py-2 text-sm sm:px-4"
             disabled={loading}
           >
             Cancelar

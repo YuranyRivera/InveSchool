@@ -96,7 +96,7 @@ const AuxMaintenanceTable = ({
                       <>
                         <button
                           onClick={() => onDelete(row)}
-                          className="bg-white text-[#3B82F6] py-1 px-3 border border-[#3B82F6] rounded flex items-center hover:bg-green-100 transition-colors text-sm"
+                          className="bg-white text-[#3B82F6] py-1 px-3 border border-[#3B82F6] rounded flex items-center hover:bg-blue-50 transition-colors text-sm"
                         >
                           <i className="fas fa-trash-alt mr-1"></i> Eliminar
                         </button>
@@ -163,7 +163,7 @@ const AuxMaintenanceTable = ({
                 <>
                   <button
                     onClick={() => onDelete(row)}
-                    className="bg-white text-[#3B82F6] py-2 px-3 border border-[#3B82F6] rounded flex-1 hover:bg-green-100 transition-colors flex justify-center items-center"
+                    className="bg-white text-[#3B82F6] py-2 px-3 border border-[#3B82F6] rounded flex-1 hover:bg-blue-50 transition-colors flex justify-center items-center"
                   >
                     <i className="fas fa-trash-alt mr-2"></i> Eliminar
                   </button>

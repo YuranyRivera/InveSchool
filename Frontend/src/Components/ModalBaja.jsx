@@ -205,7 +205,7 @@ const ModalBaja = ({ isOpen, onClose, onSave, articleData }) => {
               </label>
               <textarea
                 name="motivo_baja"
-                className={`w-full h-32 p-2 border rounded-lg resize-none focus:ring-2 focus:ring-green-500 focus:border-transparent ${
+                className={`w-full h-32 p-2 border rounded-lg resize-none focus:ring-2 focus:ring-[#3B82F6] focus:border-transparent ${
                   errors.motivo_baja ? 'border-red-500' : 'border-gray-300'
                 }`}
                 placeholder="Describe el motivo de la baja..."
@@ -223,7 +223,7 @@ const ModalBaja = ({ isOpen, onClose, onSave, articleData }) => {
               <input
                 type="text"
                 name="usuario_baja"
-                className={`w-full p-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
+                className={`w-full p-2 border rounded-lg focus:ring-2 focus:ring-[#3B82F6] focus:border-transparent ${
                   errors.usuario_baja ? 'border-red-500' : 'border-gray-300'
                 }`}
                 placeholder="Nombre del usuario"
@@ -241,7 +241,7 @@ const ModalBaja = ({ isOpen, onClose, onSave, articleData }) => {
               <input
                 type="number"
                 name="cantidad"
-                className={`w-full p-2 border rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent ${
+                className={`w-full p-2 border rounded-lg focus:ring-2 focus:ring-[#3B82F6] focus:border-transparent ${
                   errors.cantidad ? 'border-red-500' : 'border-gray-300'
                 }`}
                 placeholder="Cantidad del artículo"
@@ -257,7 +257,7 @@ const ModalBaja = ({ isOpen, onClose, onSave, articleData }) => {
         {/* Botones */}
         <div className="flex justify-between items-center mt-6">
           <button
-            className="bg-white hover:bg-[#3B82F6] text-green-600 rounded-lg border-2 border-green-600 px-4 py-2 hover:text-white transition duration-300 flex items-center"
+            className="bg-white hover:bg-[#3B82F6] text-[#3B82F6] rounded-lg border-2 border-[#3B82F6] px-4 py-2 hover:text-white transition duration-300 flex items-center"
             onClick={handleSave}
           >
             <i className="fas fa-check-circle mr-2"></i>

@@ -1,17 +1,11 @@
-﻿import React from 'react';
-import '@dotlottie/player-component';
+import React from 'react';
 
-const Example = () => {
+const Loader = () => {
   return (
-    <dotlottie-player
-      src="https://lottie.host/0aca447b-d3c9-46ed-beeb-d4481815915a/qvvqgKAKQU.lottie"
-      background="transparent"
-      speed="1"
-      style={{ width: '300px', height: '300px' }}
-      loop
-      autoplay
-    />
+    <div className="flex items-center justify-center w-full h-full min-h-[200px]">
+      <div className="w-12 h-12 border-4 border-blue-100 border-t-[#3B82F6] rounded-full animate-spin"></div>
+    </div>
   );
 };
 
-export default Example;
+export default Loader;

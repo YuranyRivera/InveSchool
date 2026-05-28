@@ -3,7 +3,7 @@
 const Table = ({ title, headers, rows }) => {
   return (
     <div className="p-4">
-      <h2 className="text-xl font-semibold text-green-600 mb-4">{title}</h2>
+      <h2 className="text-xl font-semibold text-[#3B82F6] mb-4">{title}</h2>
       
       {/* Tabla para pantallas medianas y grandes */}
       <div className="hidden md:block">
@@ -30,7 +30,7 @@ const Table = ({ title, headers, rows }) => {
       {/* Vista de tarjetas para dispositivos móviles */}
       <div className="md:hidden space-y-4">
         {rows.map((row, rowIndex) => (
-          <div key={rowIndex} className="bg-white rounded-lg shadow-md p-4 border-l-4 border-green-500">
+          <div key={rowIndex} className="bg-white rounded-lg shadow-md p-4 border-l-4 border-[#3B82F6]">
             {headers.map((header, headerIndex) => (
               <div key={headerIndex} className="py-2 border-b last:border-b-0">
                 <div className="font-medium text-gray-600">{header}</div>
