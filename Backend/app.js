@@ -26,11 +26,13 @@ const allowedOrigins = [
   'https://inventarioschool-v1.onrender.com',
 ];
 
+const allowedOriginPattern = /\.netlify\.app$/;
+
 // Configuración de CORS
 const corsOptions = {
   origin: function (origin, callback) {
     // Permitir solicitudes sin origen (como Postman) o con orígenes permitidos
-    if (!origin || allowedOrigins.includes(origin)) {
+    if (!origin || allowedOrigins.includes(origin) || allowedOriginPattern.test(origin)) {
       callback(null, true);
     } else {
       callback(new Error('Not allowed by CORS'));
