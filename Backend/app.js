@@ -24,9 +24,10 @@ const allowedOrigins = [
   'https://inveschool.netlify.app',
   'https://front-inventarioschool-v1.onrender.com',
   'https://inventarioschool-v1.onrender.com',
+  'https://frontend-phi-five-52.vercel.app',
 ];
 
-const allowedOriginPattern = /\.netlify\.app$/;
+const allowedOriginPattern = /\.(netlify\.app|vercel\.app)$/;
 
 // Configuración de CORS
 const corsOptions = {
