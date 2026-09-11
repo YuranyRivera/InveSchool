@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import * as XLSX from 'xlsx';
+import { drawPdfHeader } from '../utils/pdfHeader';
 
 export const useHistorialBajas = (createImageButton, createPDFButton) => {
   const navigate = useNavigate();
@@ -141,47 +142,37 @@ export const useHistorialBajas = (createImageButton, createPDFButton) => {
     // Filtrar filas eliminando la columna de imagen y botón de exportación
     const dataRows = rows.map(row => row.slice(0, 5));
   
-    // Cargar la imagen del encabezado
-    const imagePath = '/Img/encabezado.png';
-    const img = new Image();
-    img.src = imagePath;
-  
-    img.onload = () => {
-      const imgWidth = 190;
-      const imgHeight = (img.height * imgWidth) / img.width;
-      const x = (doc.internal.pageSize.width - imgWidth) / 2;
-      const y = 10;
-  
-      doc.addImage(img, 'PNG', x, y, imgWidth, imgHeight);
-  
-      // Título del reporte
-      const titleY = y + imgHeight + 10;
-      doc.setFontSize(16);
-      doc.setFont('helvetica', 'bold');
-      doc.text('Historial de Artículos Dados de Baja', doc.internal.pageSize.width / 2, titleY, { align: 'center' });
-  
-      // Generar la tabla con autoTable
-      doc.autoTable({
-        startY: titleY + 15,
-        head: [columns],  // Encabezados
-        body: dataRows,   // Datos corregidos
-        theme: 'striped',
-        headStyles: { fillColor: [59, 130, 246], textColor: [255, 255, 255] },
-        styles: { fontSize: 9, cellPadding: 3, halign: 'center', valign: 'middle' },
-        columnStyles: {
-          // Ajustar el ancho de la columna "Motivo de Baja" y permitir el salto de línea
-          2: { cellWidth: 60, fontStyle: 'normal', overflow: 'linebreak' } // Ancho fijo para la columna
-        },
-        didDrawCell: (data) => {
-          // Asegurarse de que el texto se ajuste correctamente en la celda
-          if (data.column.index === 2 && data.cell.raw.length > 50) {
-            data.cell.text = data.cell.raw; // Forzar el ajuste del texto
-          }
+    // Encabezado de marca (azul, dibujado directamente, sin imagen externa)
+    const y = 10;
+    const headerEndY = drawPdfHeader(doc, { marginTop: y });
+
+    // Título del reporte
+    const titleY = headerEndY + 10;
+    doc.setFontSize(16);
+    doc.setFont('helvetica', 'bold');
+    doc.text('Historial de Artículos Dados de Baja', doc.internal.pageSize.width / 2, titleY, { align: 'center' });
+
+    // Generar la tabla con autoTable
+    doc.autoTable({
+      startY: titleY + 15,
+      head: [columns],  // Encabezados
+      body: dataRows,   // Datos corregidos
+      theme: 'striped',
+      headStyles: { fillColor: [59, 130, 246], textColor: [255, 255, 255] },
+      styles: { fontSize: 9, cellPadding: 3, halign: 'center', valign: 'middle' },
+      columnStyles: {
+        // Ajustar el ancho de la columna "Motivo de Baja" y permitir el salto de línea
+        2: { cellWidth: 60, fontStyle: 'normal', overflow: 'linebreak' } // Ancho fijo para la columna
+      },
+      didDrawCell: (data) => {
+        // Asegurarse de que el texto se ajuste correctamente en la celda
+        if (data.column.index === 2 && data.cell.raw.length > 50) {
+          data.cell.text = data.cell.raw; // Forzar el ajuste del texto
         }
-      });
-  
-      doc.save('historial_bajas.pdf');
-    };
+      }
+    });
+
+    doc.save('historial_bajas.pdf');
   };
   
   
@@ -238,19 +229,10 @@ export const useHistorialBajas = (createImageButton, createPDFButton) => {
         img.src = imagePath;
       });
     };
-  
+
     const addHeader = async () => {
-      try {
-        const headerImage = await loadImage('/Img/encabezado.png');
-        const imgWidth = 190;
-        const imgHeight = (headerImage.height * imgWidth) / headerImage.width;
-        const x = (doc.internal.pageSize.width - imgWidth) / 2;
-        doc.addImage(headerImage, 'PNG', x, 10, imgWidth, imgHeight);
-        return 10 + imgHeight;
-      } catch (error) {
-        console.error('Error al cargar el encabezado:', error);
-        return 10;
-      }
+      // Encabezado de marca (azul, dibujado directamente, sin imagen externa)
+      return drawPdfHeader(doc, { marginTop: 10 });
     };
   
     const addTitle = (yPosition) => {

@@ -2,6 +2,7 @@
 import * as XLSX from 'xlsx'; // Para exportar a Excel
 import jsPDF from 'jspdf'; // Para generar PDF
 import 'jspdf-autotable'; // Para la tabla en PDF
+import { drawPdfHeader } from '../utils/pdfHeader';
 
 const ModalInforme = ({ isOpen, onClose, data }) => {
   if (!isOpen) return null;
@@ -33,73 +34,58 @@ const ModalInforme = ({ isOpen, onClose, data }) => {
       format: 'a4',
     });
   
-    // Ruta de la imagen (asegurarse que esté en la carpeta public/Img)
-    const imagePath = '/Img/encabezado.png';
-  
-    // Cargar la imagen en el PDF
-    doc.setFontSize(14);
-  
-    // Agregar la imagen centrada
-    const img = new Image();
-    img.src = imagePath;
-    img.onload = () => {
-      const imgWidth = 190; // Ancho de la imagen en mm (ajusta según sea necesario)
-      const imgHeight = (img.height * imgWidth) / img.width; // Ajustar altura proporcionalmente
-      const x = (doc.internal.pageSize.width - imgWidth) / 2; // Centrar la imagen horizontalmente
-      const y = 10; // Cambié la posición vertical para que la imagen esté más arriba
-  
-      // Agregar la imagen
-      doc.addImage(img, 'PNG', x, y, imgWidth, imgHeight);
-  
-      // Título debajo de la imagen
-      doc.setFontSize(16);
-      doc.setFont("helvetica", "bold");
-      const titleY = y + imgHeight + 10; // Posición del título
-      doc.text("ORDEN DE REQUERIMIENTO DE PRODUCTOS DEL ALMACÉN", doc.internal.pageSize.width / 2, titleY, {
-        align: 'center',
-      });
-  
-      // Texto con el nombre de la persona y la fecha al lado izquierdo, alineado con la tabla
-      doc.setFontSize(12);
-      doc.setFont("helvetica", "normal");
-      const personaY = titleY + 10; // Ajustar distancia entre el título y el texto
-      const personaTexto = `NOMBRE DE LA PERSONA QUE SOLICITA EL PRODUCTO: ${data[0]?.firmaEntrega || 'N/A'} (${data[0]?.fechaSolicitud || 'N/A'})`;
-  
-      // Agregar texto al lado izquierdo, alineado con la tabla
-      const leftMargin = 15; // Alineación del texto con el margen izquierdo de la tabla
-      doc.text(personaTexto, leftMargin, personaY);
-  
-      const tableColumn = headers;
-      const tableRows = data.map((item) => [
-        item.fechaSolicitud,
-        item.producto, // Nombre del producto
-        item.cantidad,
-        item.fechaEntrega,
-        '', // Deja la columna firmaEntrega vacía
-      ]);
-    
-      // Agregar tabla al PDF, reduciendo la distancia entre el texto y la tabla
-      doc.autoTable({
-        head: [tableColumn],
-        body: tableRows,
-        startY: personaY + 5, // Reducir la distancia entre el texto y la tabla
-        styles: {
-          halign: 'center', // Alinear texto al centro
-          valign: 'middle', // Alinear verticalmente al centro
-          fontSize: 10, // Tamaño de la letra
-          lineWidth: 0.1, // Grosor de las líneas de la tabla
-        },
-        headStyles: {
-          fillColor: [59, 130, 246], // Fondo verde para el encabezado
-          textColor: [255, 255, 255], // Texto blanco en el encabezado
-          lineWidth: 0.5, // Grosor de las líneas del encabezado
-          fontSize: 10, // Tamaño de la letra del encabezado
-        },
-        margin: { top: 10 },
-      });
-  
-      doc.save("InformeDetallado.pdf"); // Guardar el archivo PDF
-    };
+    // Encabezado de marca (azul, dibujado directamente, sin imagen externa)
+    const y = 10;
+    const headerEndY = drawPdfHeader(doc, { marginTop: y });
+
+    // Título debajo del encabezado
+    doc.setFontSize(16);
+    doc.setFont("helvetica", "bold");
+    const titleY = headerEndY + 10; // Posición del título
+    doc.text("ORDEN DE REQUERIMIENTO DE PRODUCTOS DEL ALMACÉN", doc.internal.pageSize.width / 2, titleY, {
+      align: 'center',
+    });
+
+    // Texto con el nombre de la persona y la fecha al lado izquierdo, alineado con la tabla
+    doc.setFontSize(12);
+    doc.setFont("helvetica", "normal");
+    const personaY = titleY + 10; // Ajustar distancia entre el título y el texto
+    const personaTexto = `NOMBRE DE LA PERSONA QUE SOLICITA EL PRODUCTO: ${data[0]?.firmaEntrega || 'N/A'} (${data[0]?.fechaSolicitud || 'N/A'})`;
+
+    // Agregar texto al lado izquierdo, alineado con la tabla
+    const leftMargin = 15; // Alineación del texto con el margen izquierdo de la tabla
+    doc.text(personaTexto, leftMargin, personaY);
+
+    const tableColumn = headers;
+    const tableRows = data.map((item) => [
+      item.fechaSolicitud,
+      item.producto, // Nombre del producto
+      item.cantidad,
+      item.fechaEntrega,
+      '', // Deja la columna firmaEntrega vacía
+    ]);
+
+    // Agregar tabla al PDF, reduciendo la distancia entre el texto y la tabla
+    doc.autoTable({
+      head: [tableColumn],
+      body: tableRows,
+      startY: personaY + 5, // Reducir la distancia entre el texto y la tabla
+      styles: {
+        halign: 'center', // Alinear texto al centro
+        valign: 'middle', // Alinear verticalmente al centro
+        fontSize: 10, // Tamaño de la letra
+        lineWidth: 0.1, // Grosor de las líneas de la tabla
+      },
+      headStyles: {
+        fillColor: [59, 130, 246], // Fondo azul para el encabezado
+        textColor: [255, 255, 255], // Texto blanco en el encabezado
+        lineWidth: 0.5, // Grosor de las líneas del encabezado
+        fontSize: 10, // Tamaño de la letra del encabezado
+      },
+      margin: { top: 10 },
+    });
+
+    doc.save("InformeDetallado.pdf"); // Guardar el archivo PDF
   };
 
   return (

@@ -3,6 +3,7 @@ import jsPDF from 'jspdf';
 import 'jspdf-autotable';
 import * as XLSX from 'xlsx';
 import API_URL from '../config/api.js';
+import { drawPdfHeader } from '../utils/pdfHeader';
 
 const useArticulosBaja = () => {
     const [isLoading, setIsLoading] = useState(true);
@@ -109,39 +110,30 @@ const useArticulosBaja = () => {
         { header: 'Ubicación', dataKey: 5 },
         { header: 'Observación', dataKey: 6 },
       ];
-      const imagePath = '/Img/encabezado.png';
-      const img = new Image();
-      img.src = imagePath;
-      img.onload = () => {
-        const imgWidth = 190;
-        const imgHeight = (img.height * imgWidth) / img.width;
-        const x = (doc.internal.pageSize.width - imgWidth) / 2;
-        const y = 10;
-  
-        doc.addImage(img, 'PNG', x, y, imgWidth, imgHeight);
-        const titleY = y + imgHeight + 10;
-        doc.setFontSize(16);
-        doc.setFont('helvetica', 'bold');
-        doc.text('Reporte de artículos dados de baja', doc.internal.pageSize.width / 2, titleY, { align: 'center' });
-  
-        doc.autoTable({
-          startY: titleY + 15,
-          head: [columns.map((col) => col.header)],
-          body: rows.map((row) => columns.map((col) => row[col.dataKey])),
-          theme: 'striped',
-          headStyles: {
-            fillColor: [59, 130, 246],
-            textColor: [255, 255, 255],
-          },
-          styles: {
-            fontSize: 9,
-            cellPadding: 3,
-            halign: 'center',
-            valign: 'middle',
-          },
-        });
-        doc.save('articulos_dados_de_baja.pdf');
-      };
+      const y = 10;
+      const headerEndY = drawPdfHeader(doc, { marginTop: y });
+      const titleY = headerEndY + 10;
+      doc.setFontSize(16);
+      doc.setFont('helvetica', 'bold');
+      doc.text('Reporte de artículos dados de baja', doc.internal.pageSize.width / 2, titleY, { align: 'center' });
+
+      doc.autoTable({
+        startY: titleY + 15,
+        head: [columns.map((col) => col.header)],
+        body: rows.map((row) => columns.map((col) => row[col.dataKey])),
+        theme: 'striped',
+        headStyles: {
+          fillColor: [59, 130, 246],
+          textColor: [255, 255, 255],
+        },
+        styles: {
+          fontSize: 9,
+          cellPadding: 3,
+          halign: 'center',
+          valign: 'middle',
+        },
+      });
+      doc.save('articulos_dados_de_baja.pdf');
     };
   
     const exportToExcel = () => {

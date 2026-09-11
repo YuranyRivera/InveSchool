@@ -252,7 +252,7 @@ const Example = () => {
             <div className="bg-white rounded-lg shadow-lg p-6 transition-all hover:shadow-xl">
               <div className="text-center">
                 <h2 className="text-lg font-semibold text-gray-700">Total</h2>
-                <p className="text-3xl font-bold text-yellow-300 mt-2">
+                <p className="text-3xl font-bold text-[#1e3a5f] mt-2">
                   {estadisticas.total}
                 </p>
               </div>
