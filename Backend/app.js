@@ -7,6 +7,18 @@ import { v2 as cloudinary } from 'cloudinary';
 
 dotenv.config();
 
+// Verificación de variables de entorno obligatorias.
+// Sin JWT_SECRET, cualquier login/verificación de sesión revienta con un 500
+// genérico que no dice nada útil en los logs — lo dejamos explícito acá.
+const REQUIRED_ENV_VARS = ['DB_USER', 'DB_HOST', 'DB_NAME', 'DB_PASSWORD', 'DB_PORT', 'JWT_SECRET'];
+const missingEnvVars = REQUIRED_ENV_VARS.filter((key) => !process.env[key]);
+if (missingEnvVars.length > 0) {
+  console.error(
+    `⚠️  Faltan variables de entorno obligatorias: ${missingEnvVars.join(', ')}. ` +
+    'Configúralas en el panel de Render (Environment) o en tu archivo .env local.'
+  );
+}
+
 // Configuración de Cloudinary
 cloudinary.config({
   cloud_name: process.env.CLOUDINARY_CLOUD_NAME,

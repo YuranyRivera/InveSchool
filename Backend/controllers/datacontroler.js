@@ -1370,17 +1370,13 @@ export const loginUser = async (correo, contraseña) => {
 
       const match = await bcryptjs.compare(contraseña, user.contraseña);
       if (match) {
-        const token = jwt.sign(
-          { id: user.id, rol: user.rol, correo: user.correo },
-          'tu_clave_secreta',
-          { expiresIn: '1h' }
-        );
-        return { 
-          id: user.id,  
+        // El JWT real se firma en la ruta /login con process.env.JWT_SECRET;
+        // aquí solo se confirman las credenciales y se devuelven los datos del usuario.
+        return {
+          id: user.id,
           correo: user.correo,
           rol: user.rol,
           nombre: user.nombre,
-          token
         };
       } else {
         return null;
