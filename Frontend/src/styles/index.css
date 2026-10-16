@@ -1,0 +1,197 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ==========================================================================
+   Tokens de diseño — único lugar donde se definen los colores de la app.
+   Formato "R G B" para que Tailwind pueda aplicar opacidad (ej. bg-accent/10).
+   ========================================================================== */
+@layer base {
+  :root {
+    color-scheme: dark;
+
+    --color-canvas: 0 0 0;            /* fondo de la app            #000000 */
+    --color-surface: 9 14 28;         /* tarjetas y paneles (marino) #090E1C */
+    --color-elevated: 15 23 42;       /* inputs, hover, cabeceras    #0F172A */
+    --color-line: 30 41 59;           /* bordes y divisores          #1E293B */
+    --color-navy: 15 32 74;           /* azul oscuro de marca        #0F204A */
+
+    --color-fg: 245 245 247;          /* texto principal            #F5F5F7 */
+    --color-muted: 156 163 175;       /* texto secundario           #9CA3AF */
+    --color-subtle: 107 114 128;      /* placeholders, ayudas       #6B7280 */
+
+    --color-accent: 96 140 230;       /* acento sutil (iconos, foco) #608CE6 */
+    --color-accent-hover: 130 165 240; /*                             #82A5F0 */
+    --color-danger: 248 113 113;      /*                            #F87171 */
+    --color-danger-hover: 239 68 68;  /*                            #EF4444 */
+    --color-success: 74 222 128;      /*                            #4ADE80 */
+    --color-warning: 251 191 36;      /*                            #FBBF24 */
+  }
+
+  html {
+    @apply bg-canvas text-fg antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    @apply min-h-screen bg-canvas font-sans text-fg;
+  }
+
+  ::selection {
+    @apply bg-accent/40 text-white;
+  }
+
+  /* Controles nativos: heredan el tema oscuro aunque no tengan clases propias. */
+  input,
+  select,
+  textarea {
+    @apply bg-elevated text-fg placeholder:text-subtle;
+  }
+
+  select option {
+    @apply bg-elevated text-fg;
+  }
+
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent/60 ring-offset-2 ring-offset-canvas;
+  }
+
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply rounded-full border-2 border-solid border-canvas bg-line;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-subtle;
+  }
+}
+
+/* ==========================================================================
+   Componentes reutilizables
+   ========================================================================== */
+@layer components {
+  /* Botones */
+  .btn {
+    @apply inline-flex h-10 select-none items-center justify-center gap-2 whitespace-nowrap rounded-lg px-4
+      text-sm font-medium transition-colors duration-150 disabled:pointer-events-none disabled:opacity-50;
+  }
+
+  .btn-lg {
+    @apply h-12 px-6 text-[15px];
+  }
+
+  .btn-primary {
+    @apply btn bg-white text-black hover:bg-white/85;
+  }
+
+  .btn-secondary {
+    @apply btn border border-line bg-white/[0.03] text-fg hover:border-subtle hover:bg-white/[0.06];
+  }
+
+  .btn-ghost {
+    @apply btn text-muted hover:bg-white/[0.06] hover:text-fg;
+  }
+
+  .btn-danger {
+    @apply btn bg-danger-hover text-white hover:bg-red-600;
+  }
+
+  /* Formularios */
+  .label {
+    @apply mb-1.5 block text-[13px] font-medium text-muted;
+  }
+
+  .input {
+    @apply h-11 w-full rounded-lg border border-line bg-elevated px-4 text-sm text-fg transition-colors
+      placeholder:text-subtle hover:border-subtle focus:border-accent focus:outline-none focus:ring-4 focus:ring-accent/15;
+  }
+
+  .field-error {
+    @apply mt-1.5 text-[13px] text-danger;
+  }
+
+  /* Superficies */
+  .card {
+    @apply rounded-2xl border border-line bg-surface shadow-card;
+  }
+
+  .page-title {
+    @apply text-2xl font-semibold tracking-tight text-fg md:text-3xl;
+  }
+
+  .page-subtitle {
+    @apply mt-1 text-sm text-muted;
+  }
+
+  /* Tablas */
+  .table-shell {
+    @apply overflow-hidden rounded-2xl border border-line bg-surface;
+  }
+
+  .table-head {
+    @apply border-b border-line bg-elevated/60 text-left text-xs font-medium uppercase tracking-wider text-muted;
+  }
+
+  .table-row {
+    @apply border-b border-line/70 transition-colors last:border-0 hover:bg-white/[0.02];
+  }
+
+  /* Insignias de estado */
+  .badge {
+    @apply inline-flex items-center rounded-full px-2.5 py-0.5 text-xs font-medium;
+  }
+
+  /* Modales */
+  .modal-backdrop {
+    @apply fixed inset-0 z-50 flex items-center justify-center bg-black/70 p-4 backdrop-blur-sm;
+  }
+
+  .modal-panel {
+    @apply card w-full animate-fade-in;
+  }
+
+  /* Indicador de carga */
+  .spinner {
+    @apply h-10 w-10 animate-spin rounded-full border-[3px] border-line border-t-accent;
+  }
+}
+
+@layer components {
+  .btn-sm {
+    @apply h-8 gap-1.5 rounded-md px-3 text-xs;
+  }
+}
+
+@layer components {
+  /* Botón de solo ícono (acciones en tablas) */
+  .icon-btn {
+    @apply inline-flex h-8 w-8 items-center justify-center rounded-md text-muted transition-colors
+      hover:bg-white/[0.06] hover:text-fg;
+  }
+
+  .icon-btn-danger {
+    @apply icon-btn hover:bg-danger/10 hover:text-danger;
+  }
+
+  /* Control segmentado (pestañas tipo iOS) */
+  .segmented {
+    @apply inline-flex rounded-lg border border-line bg-surface p-1;
+  }
+
+  .segmented-item {
+    @apply rounded-md px-4 py-1.5 text-sm font-medium text-muted transition-colors hover:text-fg;
+  }
+
+  .segmented-item-active {
+    @apply bg-elevated text-fg shadow-sm;
+  }
+}

@@ -1,0 +1,4 @@
+node_modules
+.env
+# Archivos temporales de subida de imágenes (se envían a Cloudinary y se borran)
+uploads/

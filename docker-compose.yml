@@ -1,0 +1,25 @@
+# Levanta el proyecto completo:  docker compose up --build
+# Requiere Backend/.env (copia de Backend/.env.example con DATABASE_URL y JWT_SECRET).
+services:
+  backend:
+    build: ./Backend
+    env_file: ./Backend/.env
+    environment:
+      NODE_ENV: production
+      PORT: 4000
+      CORS_ORIGINS: http://localhost:8080
+      FRONTEND_URL: http://localhost:8080
+    ports:
+      - "4000:4000"
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./Frontend
+      args:
+        VITE_API_URL: http://localhost:4000
+    ports:
+      - "8080:80"
+    depends_on:
+      - backend
+    restart: unless-stopped

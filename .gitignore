@@ -1,0 +1,20 @@
+# Dependencias y builds
+node_modules/
+dist/
+
+# Variables de entorno y secretos (usa los archivos .env.example como guía)
+.env
+.env.*
+!.env.example
+
+# Herramientas locales
+.vercel/
+.claude/
+.vscode/
+.idea/
+
+# Archivos temporales y del sistema
+uploads/
+*.log
+.DS_Store
+Thumbs.db

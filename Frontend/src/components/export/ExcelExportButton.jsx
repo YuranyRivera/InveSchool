@@ -1,0 +1,40 @@
+// ExcelExportButton.js
+import * as XLSX from 'xlsx';
+
+const ExcelExportButton = ({ filteredData, allData }) => {
+  const exportToExcel = () => {
+    const dataToExport = filteredData.length > 0 ? filteredData : allData;
+
+    // Preparar los datos específicos para administración
+    const rows = dataToExport.map(item => ({
+      ID: item.id,
+      Fecha: item.fecha ? new Date(item.fecha).toISOString().split('T')[0] : '',
+      Descripción: item.descripcion || '',
+      Proveedor: item.proveedor || '',
+      Ubicación: item.ubicacion || '',
+      Observación: item.observacion || '',
+      Precio: typeof item.precio === 'number' ? item.precio.toFixed(2) : '0.00',
+    }));
+
+    // Crear un libro de trabajo y una hoja
+    const workbook = XLSX.utils.book_new();
+    const worksheet = XLSX.utils.json_to_sheet(rows);
+
+    // Agregar la hoja al libro
+    XLSX.utils.book_append_sheet(workbook, worksheet, 'Reporte Administrativo');
+
+    // Exportar el archivo Excel
+    XLSX.writeFile(workbook, 'reporte_administrativo.xlsx');
+  };
+
+  return (
+    <button
+      onClick={exportToExcel}
+      className="btn-secondary"
+    >
+      <i className="fas fa-file-excel text-subtle"></i> Excel
+    </button>
+  );
+};
+
+export default ExcelExportButton;
