@@ -3,3 +3,6 @@
 process.env.NODE_ENV = 'test';
 process.env.JWT_SECRET ??= 'test-secret-que-tiene-mas-de-32-caracteres-para-pruebas';
 process.env.DATABASE_URL ??= 'postgresql://test:test@localhost:5432/test';
+// Proveedor de correo simulado: las pruebas reemplazan fetch, nunca se envía un correo real.
+process.env.BREVO_API_KEY ??= 'brevo-clave-de-prueba';
+process.env.MAIL_FROM ??= 'no-reply@inveschool.test';

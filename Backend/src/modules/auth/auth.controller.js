@@ -2,7 +2,8 @@ import bcryptjs from 'bcryptjs';
 import jwt from 'jsonwebtoken';
 import { pool } from '../../config/database.js';
 import { config } from '../../config/env.js';
-import transporter, { isMailConfigured } from '../../config/mailer.js';
+import { isMailConfigured, sendMail } from '../../config/mailer.js';
+import { passwordResetEmail } from './password-reset.email.js';
 import { signAccessToken } from './token.service.js';
 import { recordAudit } from '../audit/audit.service.js';
 import { BCRYPT_ROUNDS, DEMO_ROLE, isValidEmail, normalizeEmail, passwordPolicyError } from '../../utils/validation.js';
@@ -88,11 +89,15 @@ export const requestPasswordReset = async (req, res, next) => {
     }
 
     const user = await findUserByEmail(email);
-    if (!user) return res.status(200).json(genericResponse);
 
+    // Se responde de inmediato y el correo se envía en segundo plano: la respuesta tarda lo mismo
+    // exista o no la cuenta (no revela qué correos están registrados) y un proveedor lento no la bloquea.
+    res.status(200).json(genericResponse);
+
+    if (!user) return undefined;
     if (!isMailConfigured) {
-      console.error('[mail] MAIL_USER / MAIL_PASS no están configurados; no se pudo enviar el correo de recuperación.');
-      return res.status(200).json(genericResponse);
+      console.error('[mail] No hay proveedor de correo configurado (BREVO_API_KEY o MAIL_USER/MAIL_PASS).');
+      return undefined;
     }
 
     const token = jwt.sign({ sub: String(user.id), typ: 'reset' }, resetSecretFor(user), {
@@ -102,17 +107,13 @@ export const requestPasswordReset = async (req, res, next) => {
     });
     const resetLink = `${config.frontendUrl}/reset-password?token=${encodeURIComponent(token)}&email=${encodeURIComponent(user.correo)}`;
 
-    await transporter.sendMail({
-      from: `"InveSchool" <${config.mail.user}>`,
-      to: user.correo,
-      subject: 'Restablece tu contraseña de InveSchool',
-      html: `<p>Recibimos una solicitud para restablecer tu contraseña.</p>
-             <p><a href="${resetLink}">Restablecer contraseña</a></p>
-             <p>El enlace vence en 30 minutos y solo puede usarse una vez. Si no fuiste tú, ignora este correo.</p>`,
-    });
-
-    return res.status(200).json(genericResponse);
+    sendMail({ to: user.correo, ...passwordResetEmail(resetLink) }).catch((error) =>
+      console.error('[mail] No se pudo enviar el correo de recuperación:', error.message)
+    );
+    return undefined;
   } catch (error) {
+    // Si ya se respondió, el error solo se registra; si no, lo maneja el middleware de errores.
+    if (res.headersSent) return console.error('[auth] Error en la recuperación de contraseña:', error);
     return next(error);
   }
 };

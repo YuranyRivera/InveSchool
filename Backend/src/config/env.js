@@ -51,8 +51,12 @@ export const config = Object.freeze({
     email: (process.env.DEMO_EMAIL || 'demo@inveschool.app').toLowerCase(),
   },
   mail: {
-    // Acepta también los nombres usados antes en Render (GMAIL_USER / GMAIL_APP_PASSWORD).
+    // Producción: API HTTP de Brevo (funciona en hostings que bloquean SMTP).
+    brevoApiKey: process.env.BREVO_API_KEY,
+    // Desarrollo: SMTP de Gmail. Acepta también los nombres usados antes en Render.
     user: process.env.MAIL_USER || process.env.GMAIL_USER,
     pass: process.env.MAIL_PASS || process.env.GMAIL_APP_PASSWORD,
+    // Remitente: debe estar verificado en Brevo (o ser la cuenta de Gmail).
+    from: process.env.MAIL_FROM || process.env.MAIL_USER || process.env.GMAIL_USER,
   },
 });

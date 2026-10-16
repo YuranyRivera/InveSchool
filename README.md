@@ -172,7 +172,8 @@ docker compose up --build   # frontend en http://localhost:8080, API en http://l
 | `JWT_SECRET` | Secreto para firmar sesiones (mínimo 32 caracteres aleatorios). |
 | `CORS_ORIGINS` | Dominios del frontend autorizados, separados por coma. |
 | `FRONTEND_URL` | URL pública del frontend (enlaces de los correos). |
-| `MAIL_USER` / `MAIL_PASS` | Cuenta de Gmail y contraseña de aplicación para la recuperación de contraseña. |
+| `BREVO_API_KEY` / `MAIL_FROM` | Envío de correos (recuperación de contraseña) por la API de Brevo y remitente verificado. |
+| `MAIL_USER` / `MAIL_PASS` | Alternativa para desarrollo local: SMTP de Gmail con contraseña de aplicación. |
 | `CLOUDINARY_*` | Credenciales de Cloudinary para las imágenes de bajas. |
 | `DEMO_ENABLED` | `true` para habilitar la demo pública de solo lectura. |
 
