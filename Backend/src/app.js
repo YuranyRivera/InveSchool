@@ -2,6 +2,7 @@ import express from 'express';
 import cors from 'cors';
 import { config } from './config/env.js';
 import apiRoutes from './routes/index.js';
+import healthRoutes from './modules/health/health.routes.js';
 import { apiLimiter, securityHeaders } from './middlewares/security.js';
 import { errorHandler, notFound } from './middlewares/error-handler.js';
 
@@ -32,7 +33,8 @@ export const createApp = () => {
   app.use(express.json({ limit: '1mb' }));
   app.use(express.urlencoded({ extended: false, limit: '1mb' }));
 
-  app.get('/health', (req, res) => res.status(200).json({ status: 'ok' }));
+  // Chequeos de disponibilidad (para monitores como UptimeRobot).
+  app.use(healthRoutes);
 
   app.use('/api', apiLimiter, apiRoutes);
 

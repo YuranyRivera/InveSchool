@@ -95,7 +95,7 @@ InveSchool/
 │   │   ├── config/                 # env (validado al arrancar), database, mailer, cloudinary
 │   │   ├── middlewares/            # authenticate, audit, demo-mode, security, upload, error-handler
 │   │   ├── modules/                # Un módulo por dominio: <dominio>.controller.js + <dominio>.routes.js
-│   │   │   ├── auth/  users/  audit/  dashboard/  suppliers/
+│   │   │   ├── auth/  users/  audit/  dashboard/  suppliers/  health/
 │   │   │   └── administrative-articles/  storage-articles/  transfers/  disposals/  stock-movements/
 │   │   ├── routes/index.js         # Une los módulos: rutas públicas y protegidas
 │   │   └── utils/validation.js     # Reglas compartidas (correo, contraseñas, roles)
@@ -127,6 +127,7 @@ InveSchool/
 - **Pruebas automáticas** del backend con el *test runner* nativo de Node (`npm test`): autenticación, roles, modo demo y validaciones.
 - **ESLint** sin errores en el frontend (`npm run lint`) y **0 vulnerabilidades conocidas** en las dependencias.
 - **Code splitting**: cada página se descarga solo al visitarla (carga inicial ~190 KB).
+- **Monitoreo de disponibilidad**: `/health` (servidor) y `/health/db` (base de datos), consultados por un monitor externo que avisa si algo falla.
 
 ## Instalación local
 
